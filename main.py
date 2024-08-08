@@ -1,14 +1,17 @@
 import requests
 import json
 import datetime
+import pytz
 
 def Date():
-    Date=datetime.datetime.now()
-    return(Date.strftime("%d/%m/%Y"))
+    paris_tz = pytz.timezone('Europe/Paris')
+    now = datetime.datetime.now(paris_tz)
+    return now.strftime("%d/%m/%Y")
 
 def Hour():
-    Date=datetime.datetime.now()
-    return(Date.strftime("%H:%M:%S"))
+    paris_tz = pytz.timezone('Europe/Paris')
+    now = datetime.datetime.now(paris_tz)
+    return now.strftime("%H:%M:%S")
 
 
 response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=1000").json()
