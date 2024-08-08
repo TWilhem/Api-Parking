@@ -14,7 +14,7 @@ def Hour():
     return now.strftime("%H:%M:%S")
 
 
-response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=10000").json()
+response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=1000").json()
 
 Liste_Car = []
 with open(f"./SAE-Car.txt", "w", encoding='utf8') as VALUES_Car:
