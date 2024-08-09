@@ -13,13 +13,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:002",
         "type": "BikeHireDockingStation",
         "address": "Comédie",
-        "availableBikeNumber": 12,
+        "availableBikeNumber": 11,
         "totalSlotNumber": 20,
         "longitude": [
             43.608148
@@ -29,13 +29,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:004",
         "type": "BikeHireDockingStation",
         "address": "Hôtel de Ville",
-        "availableBikeNumber": 5,
+        "availableBikeNumber": 4,
         "totalSlotNumber": 16,
         "longitude": [
             43.599088
@@ -45,13 +45,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:005",
         "type": "BikeHireDockingStation",
         "address": "Corum",
-        "availableBikeNumber": 7,
+        "availableBikeNumber": 8,
         "totalSlotNumber": 12,
         "longitude": [
             43.613989
@@ -61,13 +61,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:006",
         "type": "BikeHireDockingStation",
         "address": "Place Albert 1er - St Charles",
-        "availableBikeNumber": 13,
+        "availableBikeNumber": 12,
         "totalSlotNumber": 27,
         "longitude": [
             43.616768
@@ -77,7 +77,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:007",
@@ -93,7 +93,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:008",
@@ -109,7 +109,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:009",
@@ -125,13 +125,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:010",
         "type": "BikeHireDockingStation",
         "address": "Rondelet",
-        "availableBikeNumber": 5,
+        "availableBikeNumber": 6,
         "totalSlotNumber": 16,
         "longitude": [
             43.603038
@@ -141,13 +141,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:011",
         "type": "BikeHireDockingStation",
         "address": "Plan Cabanes",
-        "availableBikeNumber": 6,
+        "availableBikeNumber": 9,
         "totalSlotNumber": 12,
         "longitude": [
             43.608491
@@ -157,7 +157,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:012",
@@ -173,7 +173,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:013",
@@ -189,7 +189,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:014",
@@ -205,7 +205,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:015",
@@ -221,7 +221,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:016",
@@ -237,7 +237,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:017",
@@ -253,7 +253,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:018",
@@ -269,7 +269,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:019",
@@ -285,7 +285,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:020",
@@ -301,7 +301,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:021",
@@ -317,13 +317,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:023",
         "type": "BikeHireDockingStation",
         "address": "Les Arceaux",
-        "availableBikeNumber": 5,
+        "availableBikeNumber": 4,
         "totalSlotNumber": 8,
         "longitude": [
             43.612659
@@ -333,7 +333,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:024",
@@ -349,7 +349,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:025",
@@ -365,7 +365,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:026",
@@ -381,7 +381,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:027",
@@ -397,7 +397,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:028",
@@ -413,7 +413,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:029",
@@ -429,7 +429,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:030",
@@ -445,13 +445,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:031",
         "type": "BikeHireDockingStation",
         "address": "Voltaire",
-        "availableBikeNumber": 4,
+        "availableBikeNumber": 5,
         "totalSlotNumber": 8,
         "longitude": [
             43.603767
@@ -461,7 +461,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:032",
@@ -477,7 +477,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:033",
@@ -493,7 +493,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:034",
@@ -509,7 +509,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:035",
@@ -525,7 +525,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:036",
@@ -541,7 +541,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:037",
@@ -557,7 +557,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:038",
@@ -573,7 +573,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:039",
@@ -589,7 +589,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:040",
@@ -605,7 +605,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:041",
@@ -621,7 +621,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:042",
@@ -637,7 +637,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:043",
@@ -653,7 +653,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:044",
@@ -669,7 +669,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:045",
@@ -685,7 +685,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:046",
@@ -701,7 +701,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:047",
@@ -717,13 +717,13 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:048",
         "type": "BikeHireDockingStation",
         "address": "Hôtel du Département",
-        "availableBikeNumber": 4,
+        "availableBikeNumber": 2,
         "totalSlotNumber": 8,
         "longitude": [
             43.621682
@@ -733,7 +733,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:049",
@@ -749,7 +749,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:050",
@@ -765,7 +765,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:051",
@@ -781,7 +781,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:053",
@@ -797,7 +797,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:054",
@@ -813,7 +813,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:055",
@@ -829,7 +829,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:056",
@@ -845,7 +845,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:057",
@@ -861,7 +861,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:059",
@@ -877,7 +877,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:060",
@@ -893,7 +893,7 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     },
     {
         "id": "urn:ngsi-ld:station:061",
@@ -909,6 +909,6 @@
         ],
         "status": "working",
         "Date": "09/08/2024",
-        "Hour": "19:31:55"
+        "Hour": "19:46:33"
     }
 ]
