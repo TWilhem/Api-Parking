@@ -17,7 +17,7 @@ def Hour():
 response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=1000").json()
 
 Liste_Car = []
-with open(f"./SAE-Car.txt", "W", encoding='utf8') as VALUES_Car:
+with open(f"./SAE-Car.txt", "w", encoding='utf8') as VALUES_Car:
     
     for data in response:
         try:
@@ -48,7 +48,7 @@ with open(f"./SAE-Car.txt", "W", encoding='utf8') as VALUES_Car:
 response_2 = requests.get('https://portail-api-data.montpellier3m.fr/bikestation?limit=1000').json()
 
 Liste_Velo = []
-with open(f"./SAE-Bike.txt", "W", encoding='utf8') as VALUES_Bike:
+with open(f"./SAE-Bike.txt", "w", encoding='utf8') as VALUES_Bike:
     
     for data in response_2:
         try:
