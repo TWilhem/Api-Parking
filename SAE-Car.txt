@@ -6,7 +6,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 182,
+        "availableSpotNumber": 184,
         "totalSpotNumber": 239,
         "category": [
             "feeCharged",
@@ -22,7 +22,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Comedie",
@@ -31,7 +31,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 223,
+        "availableSpotNumber": 233,
         "totalSpotNumber": 741,
         "category": [
             "feeCharged",
@@ -47,7 +47,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Corum",
@@ -56,7 +56,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 253,
+        "availableSpotNumber": 256,
         "totalSpotNumber": 480,
         "category": [
             "feeCharged",
@@ -72,7 +72,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Europa",
@@ -81,7 +81,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 491,
+        "availableSpotNumber": 492,
         "totalSpotNumber": 591,
         "category": [
             "feeCharged",
@@ -97,7 +97,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Foch",
@@ -106,7 +106,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 85,
+        "availableSpotNumber": 96,
         "totalSpotNumber": 598,
         "category": [
             "feeCharged",
@@ -122,7 +122,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Gambetta",
@@ -131,7 +131,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 283,
+        "availableSpotNumber": 281,
         "totalSpotNumber": 439,
         "category": [
             "feeCharged",
@@ -147,7 +147,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Gare",
@@ -156,7 +156,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 363,
+        "availableSpotNumber": 379,
         "totalSpotNumber": 649,
         "category": [
             "feeCharged",
@@ -172,7 +172,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Triangle",
@@ -197,7 +197,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Pitot",
@@ -222,7 +222,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Circe",
@@ -231,7 +231,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 1108,
+        "availableSpotNumber": 1112,
         "totalSpotNumber": 1200,
         "category": [
             "feeCharged",
@@ -247,7 +247,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Garcia Lorca",
@@ -272,7 +272,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Mosson",
@@ -297,7 +297,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Sabines",
@@ -306,7 +306,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 195,
+        "availableSpotNumber": 196,
         "totalSpotNumber": 220,
         "category": [
             "feeCharged",
@@ -322,7 +322,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Sablassou",
@@ -331,7 +331,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 293,
+        "availableSpotNumber": 295,
         "totalSpotNumber": 372,
         "category": [
             "feeCharged",
@@ -347,7 +347,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Saint Jean Le Sec",
@@ -372,7 +372,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Euromedecine",
@@ -381,7 +381,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 228,
+        "availableSpotNumber": 229,
         "totalSpotNumber": 255,
         "category": [
             "feeCharged",
@@ -397,7 +397,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Occitanie",
@@ -422,7 +422,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Vicarello",
@@ -447,7 +447,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Gaumont EST",
@@ -472,7 +472,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Gaumont OUEST",
@@ -481,7 +481,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 29,
+        "availableSpotNumber": 54,
         "totalSpotNumber": 250,
         "category": [
             "feeCharged",
@@ -497,7 +497,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Charles de Gaulle",
@@ -522,7 +522,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Polygone",
@@ -531,7 +531,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 1460,
+        "availableSpotNumber": 1473,
         "totalSpotNumber": 1911,
         "category": [
             "feeCharged",
@@ -547,7 +547,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Arc de Triomphe",
@@ -556,7 +556,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 133,
+        "availableSpotNumber": 142,
         "totalSpotNumber": 420,
         "category": [
             "feeCharged",
@@ -572,7 +572,7 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     },
     {
         "name": "Gaumont-Circe",
@@ -581,7 +581,7 @@
             "car",
             "moped"
         ],
-        "availableSpotNumber": 371,
+        "availableSpotNumber": 380,
         "totalSpotNumber": 500,
         "category": [
             "feeCharged",
@@ -597,6 +597,6 @@
         "requiredPermit": "noPermitNeeded",
         "status": "Open",
         "Date": "16/08/2024",
-        "Hour": "22:46:31"
+        "Hour": "22:57:49"
     }
 ]
