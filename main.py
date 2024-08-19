@@ -23,7 +23,6 @@ try:
 
     if "message" in response and response["message"] == "API rate limit exceeded":
         log_rate_limit_exceeded("SAE-Car", response)
-        return
         
     Liste_Car = []
     with open(f"./SAE-Car.txt", "w", encoding='utf8') as VALUES_Car:
@@ -61,7 +60,6 @@ try:
 
     if "message" in response_2 and response_2["message"] == "API rate limit exceeded":
         log_rate_limit_exceeded("SAE-Bike", response_2)
-        return
 
     Liste_Velo = []
     with open(f"./SAE-Bike.txt", "w", encoding='utf8') as VALUES_Bike:
