@@ -13,10 +13,18 @@ def Hour():
     now = datetime.datetime.now(paris_tz)
     return now.strftime("%H:%M:%S")
 
+def log_rate_limit_exceeded(api_name, response_content):
+    with open(f"./{api_name}_rate_limit.log", "a", encoding='utf8') as log_file:
+        log_file.write(f"{Date()} {Hour()} - Rate limit exceeded: {response_content}\n")
+
 try:
 
     response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=1000").json()
 
+    if "message" in response and response["message"] == "API rate limit exceeded":
+        log_rate_limit_exceeded("SAE-Car", response)
+        return
+        
     Liste_Car = []
     with open(f"./SAE-Car.txt", "w", encoding='utf8') as VALUES_Car:
         
@@ -50,6 +58,10 @@ except requests.exceptions.RequestException:
 try:
 
     response_2 = requests.get('https://portail-api-data.montpellier3m.fr/bikestation?limit=1000').json()
+
+    if "message" in response_2 and response_2["message"] == "API rate limit exceeded":
+        log_rate_limit_exceeded("SAE-Bike", response_2)
+        return
 
     Liste_Velo = []
     with open(f"./SAE-Bike.txt", "w", encoding='utf8') as VALUES_Bike:
