@@ -13,16 +13,19 @@ def Hour():
     now = datetime.datetime.now(paris_tz)
     return now.strftime("%H:%M:%S")
 
-def log_rate_limit_exceeded(api_name, response_content):
+def log(api_name, type, response_content):
     with open(f"./{api_name}_rate_limit.log", "a", encoding='utf8') as log_file:
-        log_file.write(f"{Date()} {Hour()} - Rate limit exceeded: {response_content}\n")
+        if type == "Limit":
+            log_file.write(f"{Date()} {Hour()} - Rate limit exceeded: {response_content}\n")
+        if type == "NoAccess":
+            log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux données\n")
 
 try:
 
     response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=1000").json()
 
     if "message" in response and response["message"] == "API rate limit exceeded":
-        log_rate_limit_exceeded("SAE-Car", response)
+        log("SAE-Car", "Limit", response)
         
     Liste_Car = []
     with open(f"./SAE-Car.txt", "w", encoding='utf8') as VALUES_Car:
@@ -51,7 +54,7 @@ try:
         VALUES_Car.writelines(json.dumps(NewdataCar, ensure_ascii=False, indent=4))
 
 except requests.exceptions.RequestException:
-    print("Impossible d'accéder aux données de stationnement pour voitures. Tentative d'accès aux données de vélos...")
+    log("SAE-Car", "NoAccess")
 
 
 try:
@@ -59,7 +62,7 @@ try:
     response_2 = requests.get('https://portail-api-data.montpellier3m.fr/bikestation?limit=1000').json()
 
     if "message" in response_2 and response_2["message"] == "API rate limit exceeded":
-        log_rate_limit_exceeded("SAE-Bike", response_2)
+        log("SAE-Bike", "Limit", response_2)
 
     Liste_Velo = []
     with open(f"./SAE-Bike.txt", "w", encoding='utf8') as VALUES_Bike:
@@ -86,4 +89,4 @@ try:
         VALUES_Bike.writelines(json.dumps(NewdataBike, ensure_ascii=False, indent=4))
 
 except requests.exceptions.RequestException:
-    print("Impossible d'accéder aux données de stationnement pour vélos. Arrêt du script.")
+     log("SAE-Bike", "NoAccess")
