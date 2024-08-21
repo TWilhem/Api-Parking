@@ -14,7 +14,7 @@ def Hour():
     return now.strftime("%H:%M:%S")
 
 def log(api_name, type, response_content=""):
-    with open(f"./{api_name}_rate_limit.log", "a", encoding='utf8') as log_file:
+    with open(f"./Erreur.log", "a", encoding='utf8') as log_file:
         if type == "Limit":
             log_file.write(f"{Date()} {Hour()} - Rate limit exceeded: {response_content}\n")
         if type == "NoAccess":
