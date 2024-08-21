@@ -18,7 +18,7 @@ def log(api_name, type, response_content=""):
         if type == "Limit":
             log_file.write(f"{Date()} {Hour()} - Rate limit exceeded: {response_content}\n")
         if type == "NoAccess":
-            log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux données\n")
+            log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux données {api_name.replace('SAE-', '')}\n")
 
 try:
 
