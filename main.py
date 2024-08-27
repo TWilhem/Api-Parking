@@ -17,8 +17,10 @@ def log(api_name, type, response_content=""):
     with open(f"./Erreur.log", "a", encoding='utf8') as log_file:
         if type == "Limit":
             log_file.write(f"{Date()} {Hour()} - {response_content}\n")
+            end
         if type == "NoAccess":
             log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux données {api_name.replace('SAE-', '')}\n")
+            end
 
 try:
 
