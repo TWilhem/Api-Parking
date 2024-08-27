@@ -16,7 +16,7 @@ def Hour():
 def log(api_name, type, response_content=""):
     with open(f"./Erreur.log", "a", encoding='utf8') as log_file:
         if type == "Limit":
-            log_file.write(f"{Date()} {Hour()} - Rate limit exceeded: {response_content}\n")
+            log_file.write(f"{Date()} {Hour()} - {response_content}\n")
         if type == "NoAccess":
             log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux données {api_name.replace('SAE-', '')}\n")
 
@@ -24,7 +24,7 @@ try:
 
     response=requests.get("https://portail-api-data.montpellier3m.fr/offstreetparking?limit=1000").json()
 
-    if "message" in response and response["message"] == "API rate limit exceeded":
+    if "message" in response:
         log("SAE-Car", "Limit", response)
         
     Liste_Car = []
@@ -61,7 +61,7 @@ try:
 
     response_2 = requests.get('https://portail-api-data.montpellier3m.fr/bikestation?limit=1000').json()
 
-    if "message" in response_2 and response_2["message"] == "API rate limit exceeded":
+    if "message" in response_2:
         log("SAE-Bike", "Limit", response_2)
 
     Liste_Velo = []
