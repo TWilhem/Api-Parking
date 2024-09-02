@@ -30,7 +30,7 @@ try:
         
     else:    
         Liste_Car = []
-        with open(f"./SAE-Car.txt", "w", encoding='utf8') as VALUES_Car:
+        with open(f"./SAE-Car.txt", "a", encoding='utf8') as VALUES_Car:
             
             for data in response:
                 try:
@@ -67,7 +67,7 @@ try:
 
     else:
         Liste_Velo = []
-        with open(f"./SAE-Bike.txt", "w", encoding='utf8') as VALUES_Bike:
+        with open(f"./SAE-Bike.txt", "a", encoding='utf8') as VALUES_Bike:
             
             for data in response_2:
                 try:
