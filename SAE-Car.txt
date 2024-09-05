@@ -64305,4 +64305,605 @@
         "Date": "05/09/2024",
         "Hour": "11:32:09"
     }
+][
+    {
+        "name": "Antigone",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 145,
+        "totalSpotNumber": 239,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60871606
+        ],
+        "latitude": [
+            3.88881893
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Comedie",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 240,
+        "totalSpotNumber": 741,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60856092
+        ],
+        "latitude": [
+            3.87976196
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Corum",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 189,
+        "totalSpotNumber": 480,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.61388821
+        ],
+        "latitude": [
+            3.88225773
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Europa",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 239,
+        "totalSpotNumber": 591,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60784971
+        ],
+        "latitude": [
+            3.89253074
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Foch",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 125,
+        "totalSpotNumber": 598,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.61074912
+        ],
+        "latitude": [
+            3.87657084
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Gambetta",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 148,
+        "totalSpotNumber": 440,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60695138
+        ],
+        "latitude": [
+            3.87137436
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Gare",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 215,
+        "totalSpotNumber": 649,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.604024
+        ],
+        "latitude": [
+            3.87891
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Triangle",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 305,
+        "totalSpotNumber": 434,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60923384
+        ],
+        "latitude": [
+            3.88184418
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Pitot",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 349,
+        "totalSpotNumber": 587,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.61224494
+        ],
+        "latitude": [
+            3.87019117
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Circe",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 760,
+        "totalSpotNumber": 1200,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60495377
+        ],
+        "latitude": [
+            3.9178495
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Garcia Lorca",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 277,
+        "totalSpotNumber": 395,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.59098509
+        ],
+        "latitude": [
+            3.8907158
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Mosson",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 166,
+        "totalSpotNumber": 350,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.61623716
+        ],
+        "latitude": [
+            3.81966554
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Sabines",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 28,
+        "totalSpotNumber": 220,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.58383263
+        ],
+        "latitude": [
+            3.8602246
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Sablassou",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 200,
+        "totalSpotNumber": 372,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.63419194
+        ],
+        "latitude": [
+            3.92229536
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Saint Jean Le Sec",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 204,
+        "totalSpotNumber": 285,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.57082225
+        ],
+        "latitude": [
+            3.8379312
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Euromedecine",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 148,
+        "totalSpotNumber": 255,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.63895359
+        ],
+        "latitude": [
+            3.82772365
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Occitanie",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 232,
+        "totalSpotNumber": 615,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.63456232
+        ],
+        "latitude": [
+            3.84859796
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Vicarello",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 36,
+        "totalSpotNumber": 70,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.63286
+        ],
+        "latitude": [
+            3.898411
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Gaumont EST",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 32,
+        "totalSpotNumber": 109,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.604526
+        ],
+        "latitude": [
+            3.91529
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Gaumont OUEST",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 0,
+        "totalSpotNumber": 250,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.604824
+        ],
+        "latitude": [
+            3.914158
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Full",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Charles de Gaulle",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 149,
+        "totalSpotNumber": 260,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.6285421
+        ],
+        "latitude": [
+            3.8977621
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Polygone",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 946,
+        "totalSpotNumber": 1911,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.607697
+        ],
+        "latitude": [
+            3.88515
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Arc de Triomphe",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 28,
+        "totalSpotNumber": 440,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.61100267
+        ],
+        "latitude": [
+            3.8732007
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    },
+    {
+        "name": "Gaumont-Circe",
+        "type": "OffStreetParking",
+        "allowedVehicleType": [
+            "car",
+            "moped"
+        ],
+        "availableSpotNumber": 107,
+        "totalSpotNumber": 500,
+        "category": [
+            "feeCharged",
+            "barrierAccess",
+            "underground"
+        ],
+        "longitude": [
+            43.60495377
+        ],
+        "latitude": [
+            3.9178495
+        ],
+        "requiredPermit": "noPermitNeeded",
+        "status": "Open",
+        "Date": "05/09/2024",
+        "Hour": "12:24:59"
+    }
 ]
