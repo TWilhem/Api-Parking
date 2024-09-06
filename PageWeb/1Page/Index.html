@@ -11,7 +11,7 @@
     <canvas id="myChart" width="400" height="200"></canvas>
     <script>
         // Charger le fichier JSON
-        fetch('../../SAE-Car.txt')
+        fetch('../../SAE-Car.json')
             .then(response => response.json())
             .then(parkingData => {
                 // Extraire les heures et le nombre de places disponibles
