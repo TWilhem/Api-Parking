@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disponibilité des places de parking</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 <body>
-    <h1>Disponibilité des places de parking en fonction de l'heure</h1>
+    <h1>Disponibilité des places de parking en fonction du temps</h1>
     <canvas id="myChart" width="800" height="400"></canvas>
     <script>
         // Charger le fichier JSON
@@ -23,7 +24,7 @@
                     return {
                         label: name,
                         data: parkingEntries.map(entry => ({
-                            x: entry.Hour,
+                            x: `${entry.Date} ${entry.Hour}`,
                             y: entry.availableSpotNumber
                         })),
                         borderColor: getRandomColor(),
@@ -42,15 +43,15 @@
                             x: {
                                 type: 'time',
                                 time: {
-                                    parser: 'HH:mm:ss',
+                                    parser: 'dd/MM/yyyy HH:mm:ss',
                                     unit: 'hour',
                                     displayFormats: {
-                                        hour: 'HH:mm'
+                                        hour: 'dd/MM HH:mm'
                                     }
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Heure'
+                                    text: 'Date et Heure'
                                 }
                             },
                             y: {
@@ -68,7 +69,12 @@
                 const ctx = document.getElementById('myChart').getContext('2d');
                 new Chart(ctx, config);
             })
-            .catch(error => console.error('Erreur lors du chargement du fichier JSON:', error));
+            .catch(error => {
+                console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
+                if (error instanceof SyntaxError) {
+                    console.error('Le fichier JSON est mal formaté');
+                }
+            });
 
         // Fonction pour générer une couleur aléatoire
         function getRandomColor() {
