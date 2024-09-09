@@ -65,7 +65,7 @@ try:
             except KeyError:
                 continue
 
-        save_data("./Docs/SAE-Car.json", Liste_Car)
+        save_data("./docs/SAE-Car.json", Liste_Car)
 
 except requests.exceptions.RequestException:
     log("SAE-Car", "NoAccess")
@@ -96,7 +96,7 @@ try:
             except KeyError:
                 continue
 
-        save_data("./Docs/SAE-Bike.json", Liste_Velo)
+        save_data("./docs/SAE-Bike.json", Liste_Velo)
 
 except requests.exceptions.RequestException:
     log("SAE-Bike", "NoAccess")
