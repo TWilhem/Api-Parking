@@ -34,7 +34,7 @@ def load_existing_data(filename):
         return []
 
 def save_data(filename, data):
-    with open(filename, 'w', encoding='utf8') as file:
+    with open(filename, 'a', encoding='utf8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
 
 try:
