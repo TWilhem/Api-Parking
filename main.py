@@ -34,7 +34,7 @@ def load_existing_data(filename):
         return []
 
 def save_data(filename, data):
-    with open(filename, 'a', encoding='utf8') as file:
+    with open(filename, 'w', encoding='utf8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
 
 try:
@@ -50,13 +50,10 @@ try:
                 car = {
                     "name": data['name']["value"],
                     "type": data['type'],
-                    "allowedVehicleType": data["allowedVehicleType"]["value"],
                     "availableSpotNumber": data['availableSpotNumber']['value'],
                     "totalSpotNumber": data['totalSpotNumber']['value'],  
-                    "category": data['category']["value"],
-                    "longitude": [data['location']['value']['coordinates'][1]],
-                    "latitude": [data['location']['value']['coordinates'][0]],
-                    "requiredPermit": data['requiredPermit']['value'],
+                    "longitude": data['location']['value']['coordinates'][1],
+                    "latitude": data['location']['value']['coordinates'][0],
                     "status": data['status']["value"],
                     "Date": Date(),
                     "Hour": Hour(),
@@ -86,8 +83,8 @@ try:
                     "address": data['address']['value']['streetAddress'],
                     "availableBikeNumber": data["availableBikeNumber"]['value'],
                     "totalSlotNumber": data['totalSlotNumber']['value'],
-                    "longitude": [data['location']['value']['coordinates'][1]],
-                    "latitude": [data['location']['value']['coordinates'][0]],
+                    "longitude": data['location']['value']['coordinates'][1],
+                    "latitude": data['location']['value']['coordinates'][0],
                     "status": data['status']['value'],
                     "Date": Date(),
                     "Hour": Hour(),
