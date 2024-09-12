@@ -2,46 +2,46 @@
     {
         "name": "Antigone",
         "type": "OffStreetParking",
-        "availableSpotNumber": 157,
+        "availableSpotNumber": 156,
         "totalSpotNumber": 239,
         "longitude": 43.60871606,
         "latitude": 3.88881893,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Comedie",
         "type": "OffStreetParking",
-        "availableSpotNumber": 530,
+        "availableSpotNumber": 527,
         "totalSpotNumber": 741,
         "longitude": 43.60856092,
         "latitude": 3.87976196,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Corum",
         "type": "OffStreetParking",
-        "availableSpotNumber": 340,
+        "availableSpotNumber": 336,
         "totalSpotNumber": 480,
         "longitude": 43.61388821,
         "latitude": 3.88225773,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Europa",
         "type": "OffStreetParking",
-        "availableSpotNumber": 477,
+        "availableSpotNumber": 475,
         "totalSpotNumber": 591,
         "longitude": 43.60784971,
         "latitude": 3.89253074,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Foch",
@@ -52,18 +52,18 @@
         "latitude": 3.87657084,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Gambetta",
         "type": "OffStreetParking",
-        "availableSpotNumber": 307,
+        "availableSpotNumber": 222,
         "totalSpotNumber": 440,
         "longitude": 43.60695138,
         "latitude": 3.87137436,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Gare",
@@ -74,7 +74,7 @@
         "latitude": 3.87891,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Triangle",
@@ -85,7 +85,7 @@
         "latitude": 3.88184418,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Pitot",
@@ -96,51 +96,51 @@
         "latitude": 3.87019117,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Circe",
         "type": "OffStreetParking",
-        "availableSpotNumber": 1175,
+        "availableSpotNumber": 1176,
         "totalSpotNumber": 1200,
         "longitude": 43.60495377,
         "latitude": 3.9178495,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Garcia Lorca",
         "type": "OffStreetParking",
-        "availableSpotNumber": 357,
+        "availableSpotNumber": 356,
         "totalSpotNumber": 395,
         "longitude": 43.59098509,
         "latitude": 3.8907158,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Mosson",
         "type": "OffStreetParking",
-        "availableSpotNumber": 321,
+        "availableSpotNumber": 315,
         "totalSpotNumber": 350,
         "longitude": 43.61623716,
         "latitude": 3.81966554,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Sabines",
         "type": "OffStreetParking",
-        "availableSpotNumber": 191,
+        "availableSpotNumber": 183,
         "totalSpotNumber": 220,
         "longitude": 43.58383263,
         "latitude": 3.8602246,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Sablassou",
@@ -151,7 +151,7 @@
         "latitude": 3.92229536,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Saint Jean Le Sec",
@@ -162,29 +162,29 @@
         "latitude": 3.8379312,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Euromedecine",
         "type": "OffStreetParking",
-        "availableSpotNumber": 246,
+        "availableSpotNumber": 244,
         "totalSpotNumber": 255,
         "longitude": 43.63895359,
         "latitude": 3.82772365,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Occitanie",
         "type": "OffStreetParking",
-        "availableSpotNumber": 557,
+        "availableSpotNumber": 549,
         "totalSpotNumber": 615,
         "longitude": 43.63456232,
         "latitude": 3.84859796,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Vicarello",
@@ -195,7 +195,7 @@
         "latitude": 3.898411,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Gaumont EST",
@@ -206,51 +206,51 @@
         "latitude": 3.91529,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Gaumont OUEST",
         "type": "OffStreetParking",
-        "availableSpotNumber": 215,
+        "availableSpotNumber": 171,
         "totalSpotNumber": 250,
         "longitude": 43.604824,
         "latitude": 3.914158,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Charles de Gaulle",
         "type": "OffStreetParking",
-        "availableSpotNumber": 233,
+        "availableSpotNumber": 232,
         "totalSpotNumber": 260,
         "longitude": 43.6285421,
         "latitude": 3.8977621,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Polygone",
         "type": "OffStreetParking",
-        "availableSpotNumber": 1675,
+        "availableSpotNumber": 1659,
         "totalSpotNumber": 1911,
         "longitude": 43.607697,
         "latitude": 3.88515,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Arc de Triomphe",
         "type": "OffStreetParking",
-        "availableSpotNumber": 123,
+        "availableSpotNumber": 122,
         "totalSpotNumber": 440,
         "longitude": 43.61100267,
         "latitude": 3.8732007,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     },
     {
         "name": "Gaumont-Circe",
@@ -261,6 +261,6 @@
         "latitude": 3.9178495,
         "status": "Open",
         "Date": "12/09/2024",
-        "Hour": "06:42:19"
+        "Hour": "06:56:40"
     }
 ]
