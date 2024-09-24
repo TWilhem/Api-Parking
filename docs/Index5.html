@@ -4,80 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Two-Column Layout</title>
+    <link rel="stylesheet" href="./effect5.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        .left-zone {
-            width: 20%;
-            background-color: #f0f0f0;
-            padding: 20px;
-        }
-
-        .right-zone {
-            width: 80%;
-            padding: 20px;
-        }
-
-        .menu-button {
-            display: none;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 999;
-        }
-
-        .mobile-menu-content {
-            padding: 20px;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .left-zone {
-                display: none;
-            }
-
-            .right-zone {
-                width: 100%;
-            }
-
-            .menu-button {
-                display: block;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <div class="left-zone">
-            <h2>Left Zone (20%)</h2>
-            <p>This is the content of the left zone.</p>
+            <h2>Parking Information</h2>
+            <div id="parkingInfo"></div>
         </div>
         <div class="right-zone">
             <canvas id="myChart" width="800" height="400"></canvas>
@@ -89,7 +24,7 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
             <h2>Mobile Menu</h2>
-            <p>This is the content of the left zone, now displayed in a mobile menu.</p>
+            <div id="mobileParkingInfo"></div>
         </div>
     </div>
 
@@ -105,7 +40,7 @@
             .then(parkingData => {
                 // Trouver la dernière date complète
                 const dates = [...new Set(parkingData.map(entry => entry.Date))];
-                const lastCompleteDate = dates[dates.length - 2]; // L'avant-dernière date est la dernière complète
+                const lastCompleteDate = dates[dates.length - 2];
 
                 // Filtrer les données pour la dernière journée complète
                 const filteredData = parkingData.filter(entry => entry.Date === lastCompleteDate);
@@ -128,6 +63,18 @@
                     };
                 });
 
+                // Populate parkingInfo
+                const parkingInfo = document.getElementById('parkingInfo');
+                const mobileParkingInfo = document.getElementById('mobileParkingInfo');
+                let infoHTML = '<ul>';
+                datasets.forEach(dataset => {
+                    const lastEntry = dataset.data[dataset.data.length - 1];
+                    infoHTML += `<li><strong>${dataset.label}</strong>: ${lastEntry.y} available spots</li>`;
+                });
+                infoHTML += '</ul>';
+                parkingInfo.innerHTML = infoHTML;
+                mobileParkingInfo.innerHTML = infoHTML;
+
                 // Configuration du graphique
                 const config = {
                     type: 'line',
@@ -146,13 +93,13 @@
                                 },
                                 title: {
                                     display: true,
-                                    text: `Heure (${lastCompleteDate})`
+                                    text: `Time (${lastCompleteDate})`
                                 }
                             },
                             y: {
                                 title: {
                                     display: true,
-                                    text: 'Places disponibles'
+                                    text: 'Available Spots'
                                 },
                                 beginAtZero: true
                             }
@@ -160,7 +107,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: `Disponibilité des places de parking le ${lastCompleteDate}`
+                                text: `Parking Availability on ${lastCompleteDate}`
                             }
                         }
                     }
@@ -171,9 +118,9 @@
                 new Chart(ctx, config);
             })
             .catch(error => {
-                console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
+                console.error('Error loading or processing JSON file:', error);
                 if (error instanceof SyntaxError) {
-                    console.error('Le fichier JSON est mal formaté');
+                    console.error('JSON file is malformed');
                 }
             });
 
