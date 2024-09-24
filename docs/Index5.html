@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="left-zone">
-            <h2>Parking Information</h2>
+            <h2>Parking</h2>
             <div id="parkingInfo"></div>
         </div>
         <div class="right-zone">
@@ -24,7 +24,6 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
             <h2>Mobile Menu</h2>
-            <div id="mobileParkingInfo"></div>
         </div>
     </div>
 
@@ -40,7 +39,7 @@
             .then(parkingData => {
                 // Trouver la dernière date complète
                 const dates = [...new Set(parkingData.map(entry => entry.Date))];
-                const lastCompleteDate = dates[dates.length - 2];
+                const lastCompleteDate = dates[dates.length - 2]; // L'avant-dernière date est la dernière complète
 
                 // Filtrer les données pour la dernière journée complète
                 const filteredData = parkingData.filter(entry => entry.Date === lastCompleteDate);
@@ -93,13 +92,13 @@
                                 },
                                 title: {
                                     display: true,
-                                    text: `Time (${lastCompleteDate})`
+                                    text: `Heure (${lastCompleteDate})`
                                 }
                             },
                             y: {
                                 title: {
                                     display: true,
-                                    text: 'Available Spots'
+                                    text: 'Places disponibles'
                                 },
                                 beginAtZero: true
                             }
@@ -107,7 +106,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: `Parking Availability on ${lastCompleteDate}`
+                                text: `Disponibilité des places de parking le ${lastCompleteDate}`
                             }
                         }
                     }
@@ -118,9 +117,9 @@
                 new Chart(ctx, config);
             })
             .catch(error => {
-                console.error('Error loading or processing JSON file:', error);
+                console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
                 if (error instanceof SyntaxError) {
-                    console.error('JSON file is malformed');
+                    console.error('Le fichier JSON est mal formaté');
                 }
             });
 
