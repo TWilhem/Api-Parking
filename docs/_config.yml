@@ -1,4 +1,4 @@
-baseurl: "/docs"  
-url: "https://twilhem.github.io/Api-Parking/" 
+baseurl: ""  
+url: "https://twilhem.github.io" 
 theme: minima  
 markdown: kramdown  
