@@ -1,4 +1,4 @@
 baseurl: "/docs"  
 url: "https://twilhem.github.io" 
-theme: jekyll-theme-minimal  
+theme: minima  
 markdown: kramdown  
