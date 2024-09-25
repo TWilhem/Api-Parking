@@ -55,7 +55,7 @@
                         label: name,
                         data: parkingEntries.map(entry => ({
                             x: `${entry.Date} ${entry.Hour}`,
-                            y: entry.availableSpotNumber
+                            y: (entry.availableSpotNumber / entry.totalSpotNumber) * 100
                         })),
                         borderColor: getRandomColor(),
                         fill: false,
