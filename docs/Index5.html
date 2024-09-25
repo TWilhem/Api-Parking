@@ -55,7 +55,7 @@
                         label: name,
                         data: parkingEntries.map(entry => ({
                             x: `${entry.Date} ${entry.Hour}`,
-                            y: (entry.availableSpotNumber / entry.totalSpotNumber) * 100
+                            y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
                         })),
                         borderColor: getRandomColor(),
                         fill: false,
@@ -69,7 +69,7 @@
                 let infoHTML = '<ul>';
                 datasets.forEach(dataset => {
                     const lastEntry = dataset.data[dataset.data.length - 1];
-                    infoHTML += `<li><strong>${dataset.label}</strong>: ${lastEntry.y} available spots</li>`;
+                    infoHTML += `<li><strong>${dataset.label}</strong>: ${lastEntry.y}% de place disponible</li>`;
                 });
                 infoHTML += '</ul>';
                 parkingInfo.innerHTML = infoHTML;
