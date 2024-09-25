@@ -1,5 +1,5 @@
 baseurl: "/docs"  
-url: "https://twilhem.github.io/Api-Parking/" 
+url: "https://twilhem.github.io" 
 
 theme: jekyll-theme-minimal  
 markdown: kramdown  
