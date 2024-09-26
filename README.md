@@ -1,6 +1,4 @@
 ﻿---
-layout: default
-title: Api-Parking
 ---
 
 # Api-Parking  
