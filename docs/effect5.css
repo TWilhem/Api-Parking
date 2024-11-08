@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Empêche le défilement de la page entière */
+    overflow: hidden;
 }
 
 .container {
@@ -14,8 +14,9 @@ body {
     width: 20%;
     background-color: #f0f0f0;
     padding: 20px;
-    overflow-y: auto; /* Permet le défilement uniquement dans la zone de gauche */
-    max-height: 100vh; /* Limite la hauteur au viewport */
+    overflow-y: auto;
+    max-height: 100vh;
+    box-sizing: border-box;
 }
 
 .right-zone {
@@ -47,54 +48,45 @@ body {
     z-index: 999;
 }
 
-.mobileParkingInfo {
+.mobile-menu-content {
     padding: 20px;
     color: white;
 }
 
-/* Styles pour les éléments interactifs de infoHTML */
-#parkingInfo ul {
-    list-style: none;
+/* Styles pour les boutons avec coins arrondis */
+#parkingInfo ul, #mobileParkingInfo ul {
+    list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
-#parkingInfo li {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+#parkingInfo li, #mobileParkingInfo li {
+    background-color: #e0e0e0;
     margin: 5px 0;
     padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-#parkingInfo li:hover {
-    background-color: #e0e0e0;
+#parkingInfo li:hover, #mobileParkingInfo li:hover {
+    background-color: #d0d0d0;
 }
 
-#parkingInfo li.hidden .parking-name {
-    text-decoration: line-through; /* Barre le texte si la courbe est masquée */
-}
-
+/* Indicateur de couleur pour chaque bouton */
 .color-indicator {
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    display: inline-block;
     margin-right: 10px;
 }
 
-.parking-name {
-    font-weight: bold;
-    margin-left: 10px;
-    color: black;
-}
-
-.CaseButton {
-    width: 100%;
-    height: 20px;
+/* Texte barré pour les éléments masqués */
+.parking-name.hidden {
+    text-decoration: line-through;
+    color: #999;
 }
 
 @media (max-width: 1024px) {

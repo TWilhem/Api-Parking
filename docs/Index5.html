@@ -31,7 +31,7 @@
 
     <script>
         function toggleMenu() {
-            var menu = document.getElementById("mobileMenu");
+            const menu = document.getElementById("mobileMenu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";
         }
 
@@ -62,20 +62,11 @@
                     };
                 });
 
-                // Créer les éléments de la liste cliquables pour chaque dataset
-                const parkingInfo = document.getElementById('parkingInfo');
-                let infoHTML = '<ul>';
-                datasets.forEach((dataset, index) => {
-                    infoHTML += `
-                        <li onclick="toggleDataset(${index})">
-                            <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
-                            <span class="parking-name">${dataset.label}</span>
-                        </li>`;
-                });
-                infoHTML += '</ul>';
-                parkingInfo.innerHTML = infoHTML;
+                // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
+                populateInfoHTML('parkingInfo', datasets);
+                populateInfoHTML('mobileParkingInfo', datasets);
 
-                // Configuration du graphique sans afficher la légende
+                // Configuration du graphique
                 const config = {
                     type: 'line',
                     data: { datasets },
@@ -127,19 +118,33 @@
                 }
             });
 
+        // Fonction pour créer la liste cliquable dans les zones parkingInfo et mobileParkingInfo
+        function populateInfoHTML(elementId, datasets) {
+            const container = document.getElementById(elementId);
+            let infoHTML = '<ul>';
+            datasets.forEach((dataset, index) => {
+                infoHTML += `
+                    <li onclick="toggleDataset(${index})">
+                        <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
+                        <span class="parking-name ${dataset.hidden ? 'hidden' : ''}">${dataset.label}</span>
+                    </li>`;
+            });
+            infoHTML += '</ul>';
+            container.innerHTML = infoHTML;
+        }
+
         // Fonction pour activer/désactiver la courbe correspondante
         function toggleDataset(index) {
             const dataset = chart.data.datasets[index];
             dataset.hidden = !dataset.hidden;
             chart.update();
 
-            // Mettre à jour l'apparence de l'élément dans la liste
-            const parkingInfoItems = document.querySelectorAll('#parkingInfo li');
-            if (dataset.hidden) {
-                parkingInfoItems[index].classList.add('hidden');
-            } else {
-                parkingInfoItems[index].classList.remove('hidden');
-            }
+            // Mise à jour du style pour barrer le texte si la courbe est masquée
+            document.querySelectorAll(`#parkingInfo li:nth-child(${index + 1}) .parking-name, 
+                                       #mobileParkingInfo li:nth-child(${index + 1}) .parking-name`)
+                    .forEach(el => {
+                        el.classList.toggle('hidden', dataset.hidden);
+                    });
         }
 
         // Fonction pour générer une couleur aléatoire
