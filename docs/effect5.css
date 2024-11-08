@@ -97,7 +97,7 @@ body {
     height: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .left-zone {
         display: none;
     }
