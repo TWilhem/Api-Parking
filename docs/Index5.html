@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Two-Column Layout</title>
     <link rel="stylesheet" href="./effect5.css">
-    <script src="./action5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
@@ -71,7 +70,6 @@
                         <li onclick="toggleDataset(${index})">
                             <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
                             <span class="parking-name">${dataset.label}</span>
-                            : ${dataset.data[dataset.data.length - 1].y}% de place disponible
                         </li>`;
                 });
                 infoHTML += '</ul>';
@@ -134,6 +132,14 @@
             const dataset = chart.data.datasets[index];
             dataset.hidden = !dataset.hidden;
             chart.update();
+
+            // Mettre à jour l'apparence de l'élément dans la liste
+            const parkingInfoItems = document.querySelectorAll('#parkingInfo li');
+            if (dataset.hidden) {
+                parkingInfoItems[index].classList.add('hidden');
+            } else {
+                parkingInfoItems[index].classList.remove('hidden');
+            }
         }
 
         // Fonction pour générer une couleur aléatoire
