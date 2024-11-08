@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="left-zone">
@@ -65,13 +66,11 @@
                 const parkingInfo = document.getElementById('parkingInfo');
                 let infoHTML = '<ul>';
                 datasets.forEach((dataset, index) => {
-                    const colorStyle = `color: ${dataset.borderColor}; font-weight: bold;`;
                     infoHTML += `
-                        <li>
-                            <button onclick="toggleDataset(${index})" style="background: ${dataset.borderColor}; border: none; color: white; padding: 5px; margin-right: 5px;">
-                                ${dataset.label}
-                            </button>
-                            <span style="${colorStyle}">${dataset.label}</span>: ${dataset.data[dataset.data.length - 1].y}% de place disponible
+                        <li onclick="toggleDataset(${index})">
+                            <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
+                            <span class="parking-name">${dataset.label}</span>
+                            : ${dataset.data[dataset.data.length - 1].y}% de place disponible
                         </li>`;
                 });
                 infoHTML += '</ul>';
