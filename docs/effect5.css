@@ -40,6 +40,7 @@ body {
 .mobile-menu {
     display: none;
     position: fixed;
+    overflow-y: auto;
     top: 0;
     left: 0;
     width: 100%;
@@ -53,7 +54,6 @@ body {
     color: white;
 }
 
-/* Styles pour les boutons avec coins arrondis */
 #parkingInfo ul, #mobileParkingInfo ul {
     list-style-type: none;
     padding: 0;
@@ -75,7 +75,6 @@ body {
     background-color: #d0d0d0;
 }
 
-/* Indicateur de couleur pour chaque bouton */
 .color-indicator {
     width: 10px;
     height: 10px;
@@ -83,7 +82,6 @@ body {
     margin-right: 10px;
 }
 
-/* Texte barré pour les éléments masqués */
 .parking-name.hidden {
     text-decoration: line-through;
     color: #999;

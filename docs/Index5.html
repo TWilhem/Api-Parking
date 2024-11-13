@@ -102,7 +102,7 @@
                                 text: `Disponibilité des places de parking le ${lastCompleteDate}`
                             },
                             legend: {
-                                display: false // Désactive l'affichage de la légende
+                                display: false
                             }
                         }
                     }
@@ -138,8 +138,6 @@
             const dataset = chart.data.datasets[index];
             dataset.hidden = !dataset.hidden;
             chart.update();
-
-            // Mise à jour du style pour barrer le texte si la courbe est masquée
             document.querySelectorAll(`#parkingInfo li:nth-child(${index + 1}) .parking-name, 
                                        #mobileParkingInfo li:nth-child(${index + 1}) .parking-name`)
                     .forEach(el => {
