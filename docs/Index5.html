@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Two-Column Layout</title>
     <link rel="stylesheet" href="./effect5.css">
-    <script src="Action5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
@@ -19,12 +18,13 @@
         <div class="right-zone">
             <canvas id="myChart" width="800" height="400"></canvas>
             <div style="margin-top: 20px;">
-            <label for="timePeriod">Période d'analyse :</label>
-            <select id="timePeriod" onchange="updateTimePeriod()">
-                <option value="1">Dernier jour</option>
-                <option value="7">Derniers 7 jours</option>
-                <option value="30">Derniers 30 jours</option>
-            </select>
+                <label for="timePeriod">Période d'analyse :</label>
+                <select id="timePeriod" onchange="updateTimePeriod()">
+                    <option value="1">Dernier jour</option>
+                    <option value="7">Derniers 7 jours</option>
+                    <option value="30">Derniers 30 jours</option>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -44,50 +44,6 @@
         }
 
         let chart;
-
-        // Fonction pour mettre à jour la période d'analyse
-        function updateTimePeriod() {
-            const selectedPeriod = parseInt(document.getElementById('timePeriod').value);
-            const now = new Date();
-
-            // Filtrer les données en fonction de la période sélectionnée
-            fetch('./SAE-Car.json')
-                .then(response => response.json())
-                .then(parkingData => {
-                    // Calculer la date minimale à partir de la période sélectionnée
-                    const startDate = new Date();
-                    startDate.setDate(now.getDate() - selectedPeriod);
-
-                    // Convertir les dates en objets Date pour comparaison
-                    const filteredData = parkingData.filter(entry => {
-                        const entryDate = new Date(`${entry.Date} ${entry.Hour}`);
-                        return entryDate >= startDate && entryDate <= now;
-                    });
-
-                    // Recréer les datasets avec les données filtrées
-                    const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
-                    const datasets = parkingNames.map(name => {
-                        const parkingEntries = filteredData.filter(entry => entry.name === name);
-                        return {
-                            label: name,
-                            data: parkingEntries.map(entry => ({
-                                x: `${entry.Date} ${entry.Hour}`,
-                                y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
-                            })),
-                            borderColor: getRandomColor(),
-                            fill: false,
-                            tension: 0.4
-                        };
-                    });
-
-                    // Mettre à jour le graphique
-                    chart.data.datasets = datasets;
-                    chart.update();
-                })
-                .catch(error => {
-                    console.error('Erreur lors du filtrage des données:', error);
-                });
-        }
 
         // Charger le fichier JSON
         fetch('./SAE-Car.json')
