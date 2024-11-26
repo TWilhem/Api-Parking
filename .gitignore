@@ -46,5 +46,3 @@ env.bak/
 venv.bak/
 
 # Fichier volumineux
-docs/SAE-Bike.json
-docs/SAE-Car.json
