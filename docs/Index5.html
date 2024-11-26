@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Two-Column Layout</title>
     <link rel="stylesheet" href="./effect5.css">
+    <script src="Action5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
@@ -17,15 +18,13 @@
         </div>
         <div class="right-zone">
             <canvas id="myChart" width="800" height="400"></canvas>
-            <!-- Liste déroulante pour sélectionner la période -->
             <div style="margin-top: 20px;">
-                <label for="timePeriod">Période d'analyse :</label>
-                <select id="timePeriod" onchange="updateTimePeriod()">
-                    <option value="1">Dernier jour</option>
-                    <option value="7">Derniers 7 jours</option>
-                    <option value="30">Derniers 30 jours</option>
-                </select>
-            </div>
+            <label for="timePeriod">Période d'analyse :</label>
+            <select id="timePeriod" onchange="updateTimePeriod()">
+                <option value="1">Dernier jour</option>
+                <option value="7">Derniers 7 jours</option>
+                <option value="30">Derniers 30 jours</option>
+            </select>
         </div>
     </div>
 
@@ -90,22 +89,16 @@
                 });
         }
 
-        // Charger le fichier JSON et initialiser le graphique
+        // Charger le fichier JSON
         fetch('./SAE-Car.json')
             .then(response => response.json())
             .then(parkingData => {
-                const now = new Date();
+                const dates = [...new Set(parkingData.map(entry => entry.Date))];
+                const lastCompleteDate = dates[dates.length - 2];
 
-                // Par défaut, afficher les données des dernières 24 heures
-                const startDate = new Date();
-                startDate.setDate(now.getDate() - 1);
-
-                const filteredData = parkingData.filter(entry => {
-                    const entryDate = new Date(`${entry.Date} ${entry.Hour}`);
-                    return entryDate >= startDate && entryDate <= now;
-                });
-
+                const filteredData = parkingData.filter(entry => entry.Date === lastCompleteDate);
                 const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
+
                 const datasets = parkingNames.map(name => {
                     const parkingEntries = filteredData.filter(entry => entry.name === name);
                     return {
@@ -116,9 +109,14 @@
                         })),
                         borderColor: getRandomColor(),
                         fill: false,
+                        hidden: false,
                         tension: 0.4
                     };
                 });
+
+                // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
+                populateInfoHTML('parkingInfo', datasets);
+                populateInfoHTML('mobileParkingInfo', datasets);
 
                 // Configuration du graphique
                 const config = {
@@ -138,13 +136,13 @@
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Heure'
+                                    text: `Heure (${lastCompleteDate})`
                                 }
                             },
                             y: {
                                 title: {
                                     display: true,
-                                    text: 'Places disponibles (%)'
+                                    text: 'Places disponibles'
                                 },
                                 beginAtZero: true,
                                 max: 100
@@ -153,7 +151,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Disponibilité des places de parking'
+                                text: `Disponibilité des places de parking le ${lastCompleteDate}`
                             },
                             legend: {
                                 display: false
@@ -164,13 +162,40 @@
 
                 const ctx = document.getElementById('myChart').getContext('2d');
                 chart = new Chart(ctx, config);
-
-                // Charger les données initiales dans la liste déroulante
-                updateTimePeriod();
             })
             .catch(error => {
                 console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
+                if (error instanceof SyntaxError) {
+                    console.error('Le fichier JSON est mal formaté');
+                }
             });
+
+        // Fonction pour créer la liste cliquable dans les zones parkingInfo et mobileParkingInfo
+        function populateInfoHTML(elementId, datasets) {
+            const container = document.getElementById(elementId);
+            let infoHTML = '<ul>';
+            datasets.forEach((dataset, index) => {
+                infoHTML += `
+                    <li onclick="toggleDataset(${index})">
+                        <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
+                        <span class="parking-name ${dataset.hidden ? 'hidden' : ''}">${dataset.label}</span>
+                    </li>`;
+            });
+            infoHTML += '</ul>';
+            container.innerHTML = infoHTML;
+        }
+
+        // Fonction pour activer/désactiver la courbe correspondante
+        function toggleDataset(index) {
+            const dataset = chart.data.datasets[index];
+            dataset.hidden = !dataset.hidden;
+            chart.update();
+            document.querySelectorAll(`#parkingInfo li:nth-child(${index + 1}) .parking-name, 
+                                       #mobileParkingInfo li:nth-child(${index + 1}) .parking-name`)
+                    .forEach(el => {
+                        el.classList.toggle('hidden', dataset.hidden);
+                    });
+        }
 
         // Fonction pour générer une couleur aléatoire
         function getRandomColor() {
