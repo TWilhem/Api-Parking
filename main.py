@@ -38,6 +38,8 @@ def load_existing_data(filename):
             except json.JSONDecodeError:
                 return []
     else:
+        with open(filename, 'w', encoding='utf8') as file:
+            json.dump([], file)
         return []
 
 def save_data(filename, data):
