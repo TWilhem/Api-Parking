@@ -27,7 +27,7 @@ def log(api_name, type, response_content=""):
             log_file.write(f"{Date()} {Hour()} - {response_content} {api_name}\n")
             return
         if type == "NoAccess":
-            log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux données {api_name.replace('SAE-', '')}\n")
+            log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux donnees {api_name.replace('SAE-', '')}\n")
             return
 
 def load_existing_data(filename):
@@ -71,7 +71,7 @@ try:
             except KeyError:
                 continue
 
-        save_data(f"./docs/Donnée/SAE-Car-{File()}.json", Liste_Car)
+        save_data(f"./docs/Donnee/SAE-Car-{File()}.json", Liste_Car)
 
 except requests.exceptions.RequestException:
     log(f"SAE-Car-{File()}", "NoAccess")
@@ -102,7 +102,7 @@ try:
             except KeyError:
                 continue
 
-        save_data(f"./docs/Donnée/SAE-Bike-{File()}.json", Liste_Velo)
+        save_data(f"./docs/Donnee/SAE-Bike-{File()}.json", Liste_Velo)
 
 except requests.exceptions.RequestException:
     log(f"SAE-Bike-{File()}", "NoAccess")
