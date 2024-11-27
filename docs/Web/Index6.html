@@ -53,7 +53,7 @@
         }
 
         // Charger le fichier JSON
-        fetch('https://twilhem.github.io/Api-Parking/SAE-Car.json')
+        fetch('https://twilhem.github.io/Api-Parking/Donnée/SAE-Car.json')
             .then(response => response.json())
             .then(parkingData => {
                 const dates = [...new Set(parkingData.map(entry => entry.Date))].sort((a, b) => {
