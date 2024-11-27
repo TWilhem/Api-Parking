@@ -9,10 +9,17 @@ def Date():
     now = datetime.datetime.now(paris_tz)
     return now.strftime("%d/%m/%Y")
 
+def File():
+    paris_tz = pytz.timezone('Europe/Paris')
+    now = datetime.datetime.now(paris_tz)
+    return now.strftime("%m-%Y")
+
 def Hour():
     paris_tz = pytz.timezone('Europe/Paris')
     now = datetime.datetime.now(paris_tz)
     return now.strftime("%H:%M:%S")
+
+
 
 def log(api_name, type, response_content=""):
     with open(f"./Erreur.log", "a", encoding='utf8') as log_file:
@@ -44,7 +51,7 @@ try:
         log("SAE-Car", "Limit", response)
         
     else:    
-        Liste_Car = load_existing_data("./docs/SAE-Car.json")
+        Liste_Car = load_existing_data(f"./docs/SAE-Car-{File()}.json")
         for data in response:
             try:
                 car = {
@@ -62,10 +69,10 @@ try:
             except KeyError:
                 continue
 
-        save_data("./docs/SAE-Car.json", Liste_Car)
+        save_data("./docs/Donnée/SAE-Car.json", Liste_Car)
 
 except requests.exceptions.RequestException:
-    log("SAE-Car", "NoAccess")
+    log(f"SAE-Car-{File()}", "NoAccess")
 
 try:
     response_2 = requests.get('https://portail-api-data.montpellier3m.fr/bikestation?limit=1000').json()
@@ -74,7 +81,7 @@ try:
         log("SAE-Bike", "Limit", response_2)
 
     else:
-        Liste_Velo = load_existing_data("./docs/SAE-Bike.json")
+        Liste_Velo = load_existing_data(f"./docs/SAE-Bike-{File()}.json")
         for data in response_2:
             try:
                 bike = {
@@ -93,7 +100,7 @@ try:
             except KeyError:
                 continue
 
-        save_data("./docs/SAE-Bike.json", Liste_Velo)
+        save_data("./docs/Donnée/SAE-Bike.json", Liste_Velo)
 
 except requests.exceptions.RequestException:
-    log("SAE-Bike", "NoAccess")
+    log(f"SAE-Bike-{File()}", "NoAccess")
