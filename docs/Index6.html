@@ -56,11 +56,21 @@
         fetch('https://twilhem.github.io/Api-Parking/SAE-Car.json')
             .then(response => response.json())
             .then(parkingData => {
-                const dates = [...new Set(parkingData.map(entry => entry.Date))];
-                const lastCompleteDate = dates[dates.length - updateTimePeriod()];
-                console.log(lastCompleteDate)
+                const dates = [...new Set(parkingData.map(entry => entry.Date))].sort((a, b) => {
+                    const [dayA, monthA, yearA] = a.split('/').map(Number);
+                    const [dayB, monthB, yearB] = b.split('/').map(Number);
+                    return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
+                });
+                
+                if (dates.length < updateTimePeriod()) {
+                    console.error('Pas assez de jours complets dans les données');
+                    return;
+                }
 
-                const filteredData = parkingData.filter(entry => entry.Date === lastCompleteDate);
+                const last7CompleteDates = dates.slice(- updateTimePeriod(),- 1);
+                console.log(last7CompleteDates)
+                const filteredData = parkingData.filter(entry => last7CompleteDates.includes(entry.Date));
+                
                 const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
 
                 const datasets = parkingNames.map(name => {
@@ -100,7 +110,7 @@
                                 },
                                 title: {
                                     display: true,
-                                    text: `Heure (${lastCompleteDate})`
+                                    text: `Jour (${last7CompleteDates.join(', ')})`
                                 }
                             },
                             y: {
@@ -115,7 +125,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: `Disponibilité des places de parking le ${lastCompleteDate}`
+                                text: `Disponibilité des places de parking pour les jours ${updateTimePeriod()} derniers jours`
                             },
                             legend: {
                                 display: false
