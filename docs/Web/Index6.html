@@ -19,7 +19,7 @@
             <canvas id="myChart" width="800" height="400"></canvas>
             <div style="margin-top: 20px;">
                 <label for="timePeriod">Période d'analyse :</label>
-                <select id="timePeriod" onchange="Liste()">
+                <select id="timePeriod" onchange="ChanUrl()">
                     <option value="1">24h</option>
                     <option value="7">168h</option>
                     <option value="30">720h</option>
@@ -44,6 +44,7 @@
         }
 
         let chart;
+        let urls;
 
         function Liste() {
             let selectElement = document.getElementById("timePeriod");
@@ -54,7 +55,7 @@
 
         function Aujourdhui(jAjout = 0) {
             const maintenant = new Date();
-            maintenant.setMonth(maintenant.getMonth() + jAjout);
+            maintenant.setDate(maintenant.getDate() + jAjout);
             console.log(maintenant)
             const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
             const annee = maintenant.getFullYear();
@@ -62,104 +63,114 @@
             return `${mois}-${annee}`;
         }
 
-        function genererURLs(nombreMois = 2) {
-            const urls = [];
-            for (let i = 1; i < nombreMois; i++) {
+        function genererURLs(NbJour = 2) {
+            const urlSet = new Set();
+            for (let i = 1; i < NbJour; i++) {
                 const date = Aujourdhui(-i);
-                urls.push(`https://twilhem.github.io/Api-Parking/Donnee/SAE-Car-${date}.json`);
+                urlSet.add(`https://twilhem.github.io/Api-Parking/Donnee/SAE-Car-${date}.json`);
             }
-            console.log(urls)
-            return urls; 
+            return Array.from(urlSet); 
         }
 
-        const urls = genererURLs(Liste());
+        function ChanUrl(){
+            urls = genererURLs(Liste());
+            console.log("URLs mises à jour:", urls);
+            updateChart();
+        }
+
+        ChanUrl()
         
-        
-        Promise.all(urls.map(url => fetch(url).then(response => response.json())))
-            .then(allData => {
-                    const donneesCombinees = allData.flat();
-                    const dates = [...new Set(donneesCombinees.map(entry => entry.Date))].sort((a, b) => {
-                        const [dayA, monthA, yearA] = a.split('/').map(Number);
-                        const [dayB, monthB, yearB] = b.split('/').map(Number);
-                        return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
-                    });
+        function updateChart() {
+            Promise.all(urls.map(url => fetch(url).then(response => response.json())))
+                .then(allData => {
+                        const donneesCombinees = allData.flat();
+                        const dates = [...new Set(donneesCombinees.map(entry => entry.Date))].sort((a, b) => {
+                            const [dayA, monthA, yearA] = a.split('/').map(Number);
+                            const [dayB, monthB, yearB] = b.split('/').map(Number);
+                            return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
+                        });
 
-                    const last7CompleteDates = dates.slice(- Liste(),- 1);
-                    console.log(last7CompleteDates)
-                    const filteredData = donneesCombinees.filter(entry => last7CompleteDates.includes(entry.Date));
-                    
-                    const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
+                        const last7CompleteDates = dates.slice(- Liste(),- 1);
+                        console.log(last7CompleteDates)
+                        const filteredData = donneesCombinees.filter(entry => last7CompleteDates.includes(entry.Date));
+                        
+                        const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
 
-                    const datasets = parkingNames.map(name => {
-                        const parkingEntries = filteredData.filter(entry => entry.name === name);
-                        return {
-                            label: name,
-                            data: parkingEntries.map(entry => ({
-                                x: `${entry.Date} ${entry.Hour}`,
-                                y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
-                            })),
-                            borderColor: getRandomColor(),
-                            fill: false,
-                            hidden: false,
-                            tension: 0.4
-                        };
-                    });
+                        const datasets = parkingNames.map(name => {
+                            const parkingEntries = filteredData.filter(entry => entry.name === name);
+                            return {
+                                label: name,
+                                data: parkingEntries.map(entry => ({
+                                    x: `${entry.Date} ${entry.Hour}`,
+                                    y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
+                                })),
+                                borderColor: getRandomColor(),
+                                fill: false,
+                                hidden: false,
+                                tension: 0.4
+                            };
+                        });
 
-                    // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
-                    populateInfoHTML('parkingInfo', datasets);
-                    populateInfoHTML('mobileParkingInfo', datasets);
+                        // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
+                        populateInfoHTML('parkingInfo', datasets);
+                        populateInfoHTML('mobileParkingInfo', datasets);
 
-                    // Configuration du graphique
-                    const config = {
-                        type: 'line',
-                        data: { datasets },
-                        options: {
-                            responsive: true,
-                            scales: {
-                                x: {
-                                    type: 'time',
-                                    time: {
-                                        parser: 'dd/MM/yyyy HH:mm:ss',
-                                        unit: 'hour',
-                                        displayFormats: {
-                                            hour: 'HH:mm'
+                        if (chart) {
+                            chart.destroy(); // Détruire l'ancien graphique
+                        }
+
+                        // Configuration du graphique
+                        const config = {
+                            type: 'line',
+                            data: { datasets },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    x: {
+                                        type: 'time',
+                                        time: {
+                                            parser: 'dd/MM/yyyy HH:mm:ss',
+                                            unit: 'hour',
+                                            displayFormats: {
+                                                hour: 'HH:mm'
+                                            }
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: `Jour (${last7CompleteDates.join(', ')})`
                                         }
                                     },
-                                    title: {
-                                        display: true,
-                                        text: `Jour (${last7CompleteDates.join(', ')})`
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'Places disponibles (%)'
+                                        },
+                                        beginAtZero: true,
+                                        max: 100
                                     }
                                 },
-                                y: {
+                                plugins: {
                                     title: {
                                         display: true,
-                                        text: 'Places disponibles (%)'
+                                        text: `Disponibilité des places de parking pour les jours ${last7CompleteDates} derniers jours`
                                     },
-                                    beginAtZero: true,
-                                    max: 100
-                                }
-                            },
-                            plugins: {
-                                title: {
-                                    display: true,
-                                    text: `Disponibilité des places de parking pour les jours ${last7CompleteDates} derniers jours`
-                                },
-                                legend: {
-                                    display: false
+                                    legend: {
+                                        display: false
+                                    }
                                 }
                             }
-                        }
-                    };
+                        };
 
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    chart = new Chart(ctx, config);
-                })
-            .catch(error => {
-                console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
-                if (error instanceof SyntaxError) {
-                    console.error('Le fichier JSON est mal formaté');
-                }
-            });
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        chart = new Chart(ctx, config);
+                    })
+                .catch(error => {
+                    console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
+                    if (error instanceof SyntaxError) {
+                        console.error('Le fichier JSON est mal formaté');
+                    }
+                });
+        }
 
         // Fonction pour créer la liste cliquable dans les zones parkingInfo et mobileParkingInfo
         function populateInfoHTML(elementId, datasets) {
