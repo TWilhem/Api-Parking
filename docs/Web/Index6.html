@@ -19,7 +19,7 @@
             <canvas id="myChart" width="800" height="400"></canvas>
             <div style="margin-top: 20px;">
                 <label for="timePeriod">Période d'analyse :</label>
-                <select id="timePeriod" onchange="updateTimePeriod()">
+                <select id="timePeriod" onchange="Liste()">
                     <option value="1">24h</option>
                     <option value="7">168h</option>
                     <option value="30">720h</option>
@@ -45,98 +45,115 @@
 
         let chart;
 
-        function updateTimePeriod() {
+        function Liste() {
             let selectElement = document.getElementById("timePeriod");
             let selectedValue = parseInt(selectElement.value) + 1;
             console.log(selectedValue);
-            return(selectedValue)
+            return selectedValue;
         }
 
-        // Charger le fichier JSON
-        fetch('https://twilhem.github.io/Api-Parking/Donnée/SAE-Car.json')
-            .then(response => response.json())
-            .then(parkingData => {
-                const dates = [...new Set(parkingData.map(entry => entry.Date))].sort((a, b) => {
-                    const [dayA, monthA, yearA] = a.split('/').map(Number);
-                    const [dayB, monthB, yearB] = b.split('/').map(Number);
-                    return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
-                });
-                
-                if (dates.length < updateTimePeriod()) {
-                    console.error('Pas assez de jours complets dans les données');
-                    return;
-                }
+        function Aujourdhui(jAjout = 0) {
+            const maintenant = new Date();
+            maintenant.setMonth(maintenant.getMonth() + jAjout);
+            console.log(maintenant)
+            const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
+            const annee = maintenant.getFullYear();
+            console.log(`${mois}/${annee}`);
+            return `${mois}-${annee}`;
+        }
 
-                const last7CompleteDates = dates.slice(- updateTimePeriod(),- 1);
-                console.log(last7CompleteDates)
-                const filteredData = parkingData.filter(entry => last7CompleteDates.includes(entry.Date));
-                
-                const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
+        function genererURLs(nombreMois = 2) {
+            const urls = [];
+            for (let i = 1; i < nombreMois; i++) {
+                const date = Aujourdhui(-i);
+                urls.push(`https://twilhem.github.io/Api-Parking/Donnee/SAE-Car-${date}.json`);
+            }
+            console.log(urls)
+            return urls; 
+        }
 
-                const datasets = parkingNames.map(name => {
-                    const parkingEntries = filteredData.filter(entry => entry.name === name);
-                    return {
-                        label: name,
-                        data: parkingEntries.map(entry => ({
-                            x: `${entry.Date} ${entry.Hour}`,
-                            y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
-                        })),
-                        borderColor: getRandomColor(),
-                        fill: false,
-                        hidden: false,
-                        tension: 0.4
-                    };
-                });
+        const urls = genererURLs(Liste());
+        
+        
+        Promise.all(urls.map(url => fetch(url).then(response => response.json())))
+            .then(allData => {
+                    const donneesCombinees = allData.flat();
+                    const dates = [...new Set(donneesCombinees.map(entry => entry.Date))].sort((a, b) => {
+                        const [dayA, monthA, yearA] = a.split('/').map(Number);
+                        const [dayB, monthB, yearB] = b.split('/').map(Number);
+                        return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
+                    });
 
-                // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
-                populateInfoHTML('parkingInfo', datasets);
-                populateInfoHTML('mobileParkingInfo', datasets);
+                    const last7CompleteDates = dates.slice(- Liste(),- 1);
+                    console.log(last7CompleteDates)
+                    const filteredData = donneesCombinees.filter(entry => last7CompleteDates.includes(entry.Date));
+                    
+                    const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
 
-                // Configuration du graphique
-                const config = {
-                    type: 'line',
-                    data: { datasets },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            x: {
-                                type: 'time',
-                                time: {
-                                    parser: 'dd/MM/yyyy HH:mm:ss',
-                                    unit: 'hour',
-                                    displayFormats: {
-                                        hour: 'HH:mm'
+                    const datasets = parkingNames.map(name => {
+                        const parkingEntries = filteredData.filter(entry => entry.name === name);
+                        return {
+                            label: name,
+                            data: parkingEntries.map(entry => ({
+                                x: `${entry.Date} ${entry.Hour}`,
+                                y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
+                            })),
+                            borderColor: getRandomColor(),
+                            fill: false,
+                            hidden: false,
+                            tension: 0.4
+                        };
+                    });
+
+                    // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
+                    populateInfoHTML('parkingInfo', datasets);
+                    populateInfoHTML('mobileParkingInfo', datasets);
+
+                    // Configuration du graphique
+                    const config = {
+                        type: 'line',
+                        data: { datasets },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                x: {
+                                    type: 'time',
+                                    time: {
+                                        parser: 'dd/MM/yyyy HH:mm:ss',
+                                        unit: 'hour',
+                                        displayFormats: {
+                                            hour: 'HH:mm'
+                                        }
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: `Jour (${last7CompleteDates.join(', ')})`
                                     }
                                 },
-                                title: {
-                                    display: true,
-                                    text: `Jour (${last7CompleteDates.join(', ')})`
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Places disponibles (%)'
+                                    },
+                                    beginAtZero: true,
+                                    max: 100
                                 }
                             },
-                            y: {
+                            plugins: {
                                 title: {
                                     display: true,
-                                    text: 'Places disponibles (%)'
+                                    text: `Disponibilité des places de parking pour les jours ${last7CompleteDates} derniers jours`
                                 },
-                                beginAtZero: true,
-                                max: 100
-                            }
-                        },
-                        plugins: {
-                            title: {
-                                display: true,
-                                text: `Disponibilité des places de parking pour les jours ${updateTimePeriod()} derniers jours`
-                            },
-                            legend: {
-                                display: false
+                                legend: {
+                                    display: false
+                                }
                             }
                         }
-                    }
-                };
+                    };
 
-                const ctx = document.getElementById('myChart').getContext('2d');
-                chart = new Chart(ctx, config);
-            })
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    chart = new Chart(ctx, config);
+                })
             .catch(error => {
                 console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
                 if (error instanceof SyntaxError) {
