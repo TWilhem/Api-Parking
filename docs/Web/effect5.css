@@ -51,6 +51,11 @@ body {
 
 .mobile-menu-content {
     padding: 20px;
+    color: black;
+}
+
+.mobile-menu-content h2{
+    padding: 20px;
     color: white;
 }
 
@@ -86,6 +91,29 @@ body {
     text-decoration: line-through;
     color: #999;
 }
+
+#toggleAllButton, #mobileToggleAllButton {
+    background-color: #e0e0e0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#toggleAllButton:hover, #mobileToggleAllButton:hover {
+    background-color: #d0d0d0;
+}
+
+#parkingInfo, #mobileParkingInfo {
+    margin-top: 10px;
+}
+
 
 @media (max-width: 1024px) {
     .left-zone {

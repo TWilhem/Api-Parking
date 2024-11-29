@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Two-Column Layout</title>
+    <title>Graph</title>
     <link rel="stylesheet" href="./effect5.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
@@ -13,7 +13,9 @@
     <div class="container">
         <div class="left-zone">
             <h2>Parking</h2>
-            <div id="parkingInfo"></div>
+            <div id="parkingInfo">
+                <button id="toggleAllButton" onclick="toggleAllDatasets()">Tout afficher/masquer</button>
+            </div>
         </div>
         <div class="right-zone">
             <canvas id="myChart" width="800" height="400"></canvas>
@@ -33,19 +35,24 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
             <h2>Mobile Menu</h2>
-            <div id="mobileParkingInfo"></div> 
+            <div id="mobileParkingInfo">
+                <button id="mobileToggleAllButton" onclick="toggleAllDatasets()">Tout afficher/masquer</button>
+            </div> 
         </div>
     </div>
 
     <script>
+        let chart;
+        let urls;
+        let allHidden = false;
+
+        // Permet l'affichage du mobileMeni
         function toggleMenu() {
             const menu = document.getElementById("mobileMenu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";
         }
 
-        let chart;
-        let urls;
-
+        // Prend les valeurs de la liste Date
         function Liste() {
             let selectElement = document.getElementById("timePeriod");
             let selectedValue = parseInt(selectElement.value) + 1;
@@ -53,6 +60,7 @@
             return selectedValue;
         }
 
+        // Donne la date d'hier en ne renvoyant que Mois et Année sans affiché le jour
         function Aujourdhui(jAjout = 0) {
             const maintenant = new Date();
             maintenant.setDate(maintenant.getDate() + jAjout);
@@ -63,6 +71,7 @@
             return `${mois}-${annee}`;
         }
 
+        // Donne toutes les Urls nécessaires a la date d'affichage
         function genererURLs(NbJour = 2) {
             const urlSet = new Set();
             for (let i = 1; i < NbJour; i++) {
@@ -72,6 +81,7 @@
             return Array.from(urlSet); 
         }
 
+        // Initie les fonctions
         function ChanUrl(){
             urls = genererURLs(Liste());
             console.log("URLs mises à jour:", urls);
@@ -80,6 +90,7 @@
 
         ChanUrl()
         
+        // Affiche le Graph en fonction des valeurs prise dans les fichiers SAE-Car
         function updateChart() {
             Promise.all(urls.map(url => fetch(url).then(response => response.json())))
                 .then(allData => {
@@ -115,8 +126,9 @@
                         populateInfoHTML('parkingInfo', datasets);
                         populateInfoHTML('mobileParkingInfo', datasets);
 
+                        // Detruire ancien graphique si il existe
                         if (chart) {
-                            chart.destroy(); // Détruire l'ancien graphique
+                            chart.destroy();
                         }
 
                         // Configuration du graphique
@@ -160,10 +172,13 @@
                                 }
                             }
                         };
-
+                        
+                        // Specifie ou crée le Graph
                         const ctx = document.getElementById('myChart').getContext('2d');
                         chart = new Chart(ctx, config);
                     })
+
+                // Regarde si il y a des erreurs sur la formation des fichiers JSON
                 .catch(error => {
                     console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
                     if (error instanceof SyntaxError) {
@@ -175,13 +190,13 @@
         // Fonction pour créer la liste cliquable dans les zones parkingInfo et mobileParkingInfo
         function populateInfoHTML(elementId, datasets) {
             const container = document.getElementById(elementId);
-            let infoHTML = '<ul>';
+            let infoHTML = `<button id="${elementId === 'parkingInfo' ? 'toggleAllButton' : 'mobileToggleAllButton'}" onclick="toggleAllDatasets()">Tout afficher/masquer</button><ul>`;
             datasets.forEach((dataset, index) => {
                 infoHTML += `
-                    <li onclick="toggleDataset(${index})">
-                        <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
-                        <span class="parking-name ${dataset.hidden ? 'hidden' : ''}">${dataset.label}</span>
-                    </li>`;
+                <li onclick="toggleDataset(${index})">
+                    <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
+                    <span class="parking-name ${dataset.hidden ? 'hidden' : ''}">${dataset.label}</span>
+                </li>`;
             });
             infoHTML += '</ul>';
             container.innerHTML = infoHTML;
@@ -197,6 +212,23 @@
                     .forEach(el => {
                         el.classList.toggle('hidden', dataset.hidden);
                     });
+        }
+
+        // Fonction pour ajouter bouton affiche/masque tout
+        function toggleAllDatasets() {
+            allHidden = !allHidden;
+            chart.data.datasets.forEach(dataset => {
+                dataset.hidden = allHidden;
+            });
+            chart.update();
+            
+            document.querySelectorAll('#parkingInfo .parking-name, #mobileParkingInfo .parking-name').forEach(el => {
+                el.classList.toggle('hidden', allHidden);
+            });
+            
+            const buttonText = allHidden ? "Tout afficher" : "Tout masquer";
+            document.getElementById('toggleAllButton').textContent = buttonText;
+            document.getElementById('mobileToggleAllButton').textContent = buttonText;
         }
 
         // Fonction pour générer une couleur aléatoire
