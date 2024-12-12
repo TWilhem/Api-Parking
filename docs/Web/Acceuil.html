@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapHub</title>
+    <link rel="stylesheet" href="./effect7.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./Action1.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <section class="Left">
+        <div class="TitreParkingDataVoiture">
+            <p>Parking Voiture</p>
+        </div>
+        <div class="ParkingDataVoiture" id="ParkingDataVoiture">
+        </div>
+        <div class="TitreParkingDataVelo">
+            <p>Parking Velo</p>
+        </div>
+        <div class="ParkingDataVelo" id="ParkingDataVelo">
+        </div>
+    </section>
+    <section class="Main">
+        <div class="Titre">
+            <p>Map Parking</p>
+        </div>
+        <div class="Map" id="map">
+        </div>
+        <div class="Distance">
+            <p>Distance Parking Voiture-Velo</p>
+            <div class="Slider">
+                <input type="range" min="250" max="10000" step="250" value="250" id="slider">
+                <p id="PSlide">250 m</p>
+            </div>
+            <div class="NomP">
+            </div>
+        </div>
+    </section>
+    <section class="Right">
+        <div class="Lien">
+            <div class="TitreLien">
+                <p>Lien Analyse</p>
+            </div>
+            <ul>
+                <li><a href="./Index_Voiture.html">Analyse Parking Voiture</a></li>
+                <li><a href="./Index_Velo.html">Analyse Parking Velo</a></li>
+            </ul>
+        </div>
+        <div class="Erreur">
+            <div class="TitreErreur">
+                <p>Erreur</p>
+            </div>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+
+
+

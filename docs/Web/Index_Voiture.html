@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+    <link rel="stylesheet" href="./effect5.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="./ActionAnPar.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-zone">
+            <h2>Parking</h2>
+            <div id="parkingInfo">
+                <button id="toggleAllButton" onclick="toggleAllDatasets()">Tout afficher/masquer</button>
+            </div>
+        </div>
+        <div class="right-zone">
+            <canvas id="myChart" width="800" height="400"></canvas>
+            <div style="margin-top: 20px;">
+                <label for="timePeriod">Période d'analyse :</label>
+                <select id="timePeriod" onchange="ChanUrl()">
+                    <option value="1">24h</option>
+                    <option value="7">168h</option>
+                    <option value="30">720h</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button class="menu-button" onclick="toggleMenu()">Menu</button>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <h2>Mobile Menu</h2>
+            <div id="mobileParkingInfo">
+                <button id="mobileToggleAllButton" onclick="toggleAllDatasets()">Tout afficher/masquer</button>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
