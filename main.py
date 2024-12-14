@@ -19,22 +19,22 @@ def Hour():
     now = datetime.datetime.now(paris_tz)
     return now.strftime("%H:%M:%S")
 
-with open(f"./Attention.log", "a", encoding='utf8') as AttentionDate:
-    AttentionDate.write(f"{Date()} {Hour()}\n")
+
+AttentionE = []
 
 
 def log(Erreurlog, api_name, type, response_content=""):
-    with open(f"./{Erreurlog}", "a", encoding='utf8') as log_file:
-        if Erreurlog == "Erreur.log":
+    if Erreurlog == "Erreur.log":
+        with open(f"./{Erreurlog}", "a", encoding='utf8') as log_file:
             if type == "Limit":
                 log_file.write(f"{Date()} {Hour()} - {response_content} {api_name}\n")
                 return
             if type == "NoAccess":
                 log_file.write(f"{Date()} {Hour()} - Impossible d'accéder aux donnees {api_name.replace('SAE-', '')}\n")
                 return
-        if Erreurlog == "Attention.log":
-            if type == "PrData":
-                log_file.write(f"- {response_content} {api_name}\n")
+    if Erreurlog == "Attention.json":
+        if type == "PrData":
+            Attention.update(response_content)
 
 def load_existing_data(filename):
     if os.path.exists(filename):
@@ -75,7 +75,7 @@ try:
                 }
                 Liste_Car.append(car)
                 if (data['availableSpotNumber']['value']/data['totalSpotNumber']['value'])*100 <= 10:
-                    log("Attention.log",f"SAE-Car-{File()}", "PrData", f"{data['name']['value']} less than 10%")
+                    AttentionE.append(f"{data['name']['value']} less than 10%")
             except KeyError:
                 continue
 
@@ -108,7 +108,7 @@ try:
                 }
                 Liste_Velo.append(bike)
                 if (data['availableBikeNumber']['value']/data['totalSlotNumber']['value'])*100 <= 20:
-                    log("Attention.log",f"SAE-Bike-{File()}", "PrData", f"{data['id'].split(':')[-2]+':'+data['id'].split(':')[-1]} less than 10%")
+                    AttentionE.append(f"{data['id'].split(':')[-2]+':'+data['id'].split(':')[-1]} less than 10%")
             except KeyError:
                 continue
 
@@ -116,3 +116,16 @@ try:
 
 except requests.exceptions.RequestException:
     log("Erreur.log", f"SAE-Bike-{File()}", "NoAccess")
+
+
+
+Liste_Attention = load_existing_data(f"./docs/Donnee/Attention.json")
+
+Attention = {
+    "Date": f"{Date()} {Hour()}",
+    "Erreur": AttentionE
+}
+
+Liste_Attention.append(Attention)
+
+save_data(f"./docs/Donnee/Attention.json", Liste_Attention)
