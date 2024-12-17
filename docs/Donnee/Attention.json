@@ -2746,5 +2746,17 @@
             "station:051 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "17/12/2024 14:29:56",
+        "Erreur": [
+            "Euromedecine less than 10%",
+            "Gaumont OUEST less than 10%",
+            "Arc de Triomphe less than 10%",
+            "station:015 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:051 less than 10%"
+        ]
     }
 ]
