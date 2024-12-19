@@ -9,10 +9,9 @@ function toggleMenu() {
 }
 
 // Prend les valeurs de la liste Date
-function Liste() {
+function Temps() {
     let selectElement = document.getElementById("timePeriod");
     let selectedValue = parseInt(selectElement.value) + 1;
-    console.log(selectedValue);
     return selectedValue;
 }
 
@@ -20,7 +19,6 @@ function Liste() {
 function Aujourdhui(jAjout = 0) {
     const maintenant = new Date();
     maintenant.setDate(maintenant.getDate() + jAjout);
-    console.log(maintenant)
     const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
     const annee = maintenant.getFullYear();
     console.log(`${mois}/${annee}`);
@@ -39,12 +37,33 @@ function genererURLs(NbJour = 2) {
 
 // Initie les fonctions
 function ChanUrl(){
-    urls = genererURLs(Liste());
+    urls = genererURLs(Temps());
     console.log("URLs mises à jour:", urls);
     updateChart();
 }
 
+let num = 0
+function ChanAnalyse() {
+    num += 1
+    let TypeE = document.getElementById("TypeAnalyse");
+    let TypeS = parseInt(TypeE.value);
+    console.log(TypeS)
+    if (TypeS === 1) {
+        calculateTypeV = (entry) => `${Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)}`;
+        Max = 100
+    } else if (TypeS === 2) {
+        calculateTypeV = (entry) => `${Math.round(entry.availableSpotNumber)}`;
+        Max = 500
+    }
+    window.currentCalculateTypeV = calculateTypeV;
+    window.Max = Max;
+    updateChart()
+}
+
+
 ChanUrl()
+ChanAnalyse()
+
 
 // Affiche le Graph en fonction des valeurs prise dans les fichiers SAE-Car
 function updateChart() {
@@ -57,7 +76,7 @@ function updateChart() {
                     return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
                 });
 
-                const last7CompleteDates = dates.slice(- Liste(),- 1);
+                const last7CompleteDates = dates.slice(- Temps(),- 1);
                 console.log(last7CompleteDates)
                 const filteredData = donneesCombinees.filter(entry => last7CompleteDates.includes(entry.Date));
                 
@@ -70,7 +89,7 @@ function updateChart() {
                         label: name,
                         data: parkingEntries.map(entry => ({
                             x: `${entry.Date} ${entry.Hour}`,
-                            y: Math.round((entry.availableSpotNumber / entry.totalSpotNumber) * 100)
+                            y: window.currentCalculateTypeV(entry)
                         })),
                         borderColor: getRandomColor(),
                         fill: false,
@@ -87,6 +106,7 @@ function updateChart() {
                 if (chart) {
                     chart.destroy();
                 }
+                console.log(window.Max)
 
                 // Configuration du graphique
                 const config = {
@@ -115,7 +135,7 @@ function updateChart() {
                                     text: 'Places disponibles (%)'
                                 },
                                 beginAtZero: true,
-                                max: 100
+                                max: window.Max
                             }
                         },
                         plugins: {

@@ -114,6 +114,14 @@ body {
     margin-top: 10px;
 }
 
+#Select {
+    margin-top: 20px;
+}
+
+#labelA {
+    margin-left: 20px;
+}
+
 
 @media (max-width: 1024px) {
     .left-zone {

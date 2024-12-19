@@ -20,12 +20,18 @@
         </div>
         <div class="right-zone">
             <canvas id="myChart" width="800" height="400"></canvas>
-            <div style="margin-top: 20px;">
-                <label for="timePeriod">Période d'analyse :</label>
+            <div id="Select">
+                <label id="labelP" for="timePeriod">Période d'analyse :</label>
                 <select id="timePeriod" onchange="ChanUrl()">
                     <option value="1">24h</option>
                     <option value="7">168h</option>
                     <option value="30">720h</option>
+                </select>
+                <label id="labelA" for="TypeAnalyse">Type d'analyse :</label>
+                <select id="TypeAnalyse" onchange="ChanAnalyse()">
+                    <option value="1">Pourcentage d'occupation</option>
+                    <option value="2">Pourcentage de place libre</option>
+                    <option value="3"></option>
                 </select>
             </div>
         </div>
