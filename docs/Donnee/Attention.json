@@ -5584,5 +5584,20 @@
             "station:032 less than 10%",
             "station:051 less than 10%"
         ]
+    },
+    {
+        "Date": "20/12/2024 11:57:53",
+        "Erreur": [
+            "Sabines less than 10%",
+            "Gaumont OUEST less than 10%",
+            "Arc de Triomphe less than 10%",
+            "station:017 less than 10%",
+            "station:021 less than 10%",
+            "station:025 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:051 less than 10%"
+        ]
     }
 ]
