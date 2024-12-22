@@ -39,7 +39,7 @@
         <h3>SAE-Car Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir and file.name contains "SAE-Car-" and file.name endswith ".json" and file.name != "README.md" %}
+            {% if file.path contains page.dir and file.name contains "SAE-Car-" and file.name contains ".json" and file.name != "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endif %}
           {% endfor %}
@@ -49,7 +49,7 @@
         <h3>SAE-Bike Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir and file.name contains "SAE-Bike-" and file.name endswith ".json" and file.name != "README.md" %}
+            {% if file.path contains page.dir and file.name contains "SAE-Bike-" and file.name contains ".json" and file.name != "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endif %}
           {% endfor %}
