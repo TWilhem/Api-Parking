@@ -63,7 +63,7 @@
             <li>{{file.path}}</li>
             {% if page.dir and file.path contains page.dir and file.name != "README.md" and file.name !~ /^SAE-Car-/ and file.name !~ /^SAE-Bike-/ %}              
                 <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
-            {% endunless %}
+            {% endif %}
           {% endfor %}
         </ul>
 
