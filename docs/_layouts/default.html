@@ -34,13 +34,37 @@
     <section id="main_content">
       {% if page.dir == "/Donnee/" %}
         <h2>Files in {{ page.dir }}</h2>
+
+        <!-- SAE-Car Files -->
+        <h3>SAE-Car Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir %}
+            {% if file.path contains page.dir and file.name matches "SAE-Car-.*\.json" and file.name != "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endif %}
           {% endfor %}
         </ul>
+
+        <!-- SAE-Bike Files -->
+        <h3>SAE-Bike Files</h3>
+        <ul>
+          {% for file in site.static_files %}
+            {% if file.path contains page.dir and file.name matches "SAE-Bike-.*\.json" and file.name != "README.md" %}
+              <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        <!-- Autre Files -->
+        <h3>Autre Files</h3>
+        <ul>
+          {% for file in site.static_files %}
+            {% if file.path contains page.dir and file.name != "SAE-Bike-.*\.json" and file.name != "SAE-Bike-.*\.json" and file.name != "README.md" %}
+              <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
       {% else %}
         {{ content }}
       {% endif %}
