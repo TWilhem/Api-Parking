@@ -1,25 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: "Directory Listing" }}</title>
-</head>
-<body>
-    <h1>{{ page.title | default: "Directory Listing" }}</h1>
-
-    {% if page.dir == "/Donnee/" %}
-        <h2>Files in {{ page.dir }}</h2>
-        <ul>
-            {% for file in site.static_files %}
-                {% if file.path contains page.dir %}
-                    <li><a href="{{ file.path }}">{{ file.name }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Welcome to {{ page.dir }}</p>
-    {% endif %}
-</body>
-</html>
+<ul>
+    {% for file in site.static_files %}
+        {% if file.path contains page.dir %}
+            <li>
+                <a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
 
