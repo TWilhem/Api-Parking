@@ -59,7 +59,7 @@
         <h3>Autre Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% unless file.path contains page.dir or file.name contains "SAE-Car-" or file.name contains "SAE-Bike-" or file.name == "README.md" %}
+            {% unless file.path contains page.dir and file.name contains "SAE-Car-" or file.name contains "SAE-Bike-" or file.name == "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endunless %}
           {% endfor %}
