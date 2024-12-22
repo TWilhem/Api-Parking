@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+{% comment %}
+Le contenu principal de la page sera inséré ici.
+{% endcomment %}
+{{ content }}
+
+{% if page.dir == "/Donnee/" %}
+    <h2>Files in {{ page.dir }}</h2>
+    <ul>
+        {% for file in site.static_files %}
+            {% if file.path contains page.dir %}
+                <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Welcome to {{ page.dir }}</p>
+{% endif %}
