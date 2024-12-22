@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+                <li><a href="{{ '/Donnee/' | relative_url }}">Donnee</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% if page.dir == "/Donnee/" %}
+            <h2>Files in {{ page.dir }}</h2>
+            <ul>
+                {% for file in site.static_files %}
+                    {% if file.path contains page.dir %}
+                        <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            {{ content }}
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </footer>
+</body>
+</html>
