@@ -32,7 +32,7 @@
 
   <div class="container">
     <section id="main_content">
-      {% if page.dir == "/Donnee/" %}
+{% if page.dir == "/Donnee/" %}
         <h2>Files in {{ page.dir }}</h2>
 
         <!-- SAE-Car Files -->
@@ -59,9 +59,9 @@
         <h3>Autre Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir and file.name != "README.md" and file.name contains "SAE-Car-" == false and file.name contains "SAE-Bike-" == false %}
+            {% unless file.name contains "SAE-Car-" or file.name contains "SAE-Bike-" or file.name == "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
-            {% endif %}
+            {% endunless %}
           {% endfor %}
         </ul>
 
