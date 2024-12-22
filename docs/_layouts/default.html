@@ -39,7 +39,7 @@
         <h3>SAE-Car Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir and file.name match "SAE-Car-.*\.json" and file.name != "README.md" %}
+            {% if file.path contains page.dir and file.name contains "SAE-Car-" and file.name endswith ".json" and file.name != "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endif %}
           {% endfor %}
@@ -49,17 +49,17 @@
         <h3>SAE-Bike Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir and file.name match "SAE-Bike-.*\.json" and file.name != "README.md" %}
+            {% if file.path contains page.dir and file.name contains "SAE-Bike-" and file.name endswith ".json" and file.name != "README.md" %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endif %}
           {% endfor %}
         </ul>
 
-        <!-- Autre Files -->
+        <!-- Autre Files (excluding SAE-Car and SAE-Bike files) -->
         <h3>Autre Files</h3>
         <ul>
           {% for file in site.static_files %}
-            {% if file.path contains page.dir and file.name != "SAE-Bike-.*\.json" and file.name != "SAE-Bike-.*\.json" and file.name != "README.md" %}
+            {% if file.path contains page.dir and file.name != "README.md" and file.name contains "SAE-Car-" == false and file.name contains "SAE-Bike-" == false %}
               <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endif %}
           {% endfor %}
