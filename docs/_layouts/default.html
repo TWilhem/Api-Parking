@@ -61,8 +61,8 @@
           {% for file in site.static_files %}
             <li>{{page.dir}}</li>
             <li>{{file.path}}</li>
-            {% unless file.path != page.dir or file.name contains "SAE-Car-" or file.name contains "SAE-Bike-" or file.name == "README.md" %}
-              <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
+            {% if page.dir and file.path contains page.dir and file.name != "README.md" and file.name !~ /^SAE-Car-/ and file.name !~ /^SAE-Bike-/ %}              
+                <li><a href="{{ file.path | replace: page.dir, './' }}">{{ file.name }}</a></li>
             {% endunless %}
           {% endfor %}
         </ul>
