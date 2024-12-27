@@ -12702,5 +12702,17 @@
             "station:033 less than 10%",
             "station:056 less than 10%"
         ]
+    },
+    {
+        "Date": "27/12/2024 09:44:50",
+        "Erreur": [
+            "station:006 less than 10%",
+            "station:017 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:033 less than 10%",
+            "station:056 less than 10%"
+        ]
     }
 ]
