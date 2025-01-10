@@ -29733,5 +29733,22 @@
             "station:042 less than 10%",
             "station:051 less than 10%"
         ]
+    },
+    {
+        "Date": "10/01/2025 08:59:57",
+        "Erreur": [
+            "Mosson less than 10%",
+            "station:001 less than 10%",
+            "station:005 less than 10%",
+            "station:007 less than 10%",
+            "station:009 less than 10%",
+            "station:024 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:036 less than 10%",
+            "station:037 less than 10%",
+            "station:042 less than 10%",
+            "station:051 less than 10%"
+        ]
     }
 ]
