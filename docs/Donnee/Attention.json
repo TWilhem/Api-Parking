@@ -34155,5 +34155,23 @@
             "station:054 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "13/01/2025 09:30:38",
+        "Erreur": [
+            "Sabines less than 10%",
+            "station:011 less than 10%",
+            "station:020 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:034 less than 10%",
+            "station:036 less than 10%",
+            "station:042 less than 10%",
+            "station:049 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:054 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
