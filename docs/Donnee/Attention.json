@@ -39696,5 +39696,23 @@
             "station:049 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "17/01/2025 22:32:22",
+        "Erreur": [
+            "Arc de Triomphe less than 10%",
+            "station:004 less than 10%",
+            "station:007 less than 10%",
+            "station:011 less than 10%",
+            "station:023 less than 10%",
+            "station:025 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:036 less than 10%",
+            "station:044 less than 10%",
+            "station:045 less than 10%",
+            "station:049 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
