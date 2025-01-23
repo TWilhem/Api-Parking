@@ -15,7 +15,7 @@ function Aujourdhui(jAjout = 0) {
 }
 
 // Donne toutes les Urls nécessaires a la date d'affichage des Voiture
-function genererURLsVoiture(NbJour = 2) {
+function genererURLsVoiture(NbJour = 1) {
     const urlSet = new Set();
     for (let i = 1; i <= NbJour; i++) {
         const date = Aujourdhui(-i);
@@ -88,9 +88,9 @@ function getFilteredDataVoiture(urls) {
 }
 
 // Donne toutes les Urls nécessaires a la date d'affichage des Velo
-function genererURLsVelo(NbJour = 2) {
+function genererURLsVelo(NbJour = 1) {
     const urlSet = new Set();
-    for (let i = 1; i < NbJour; i++) {
+    for (let i = 1; i <= NbJour; i++) {
         const date = Aujourdhui(-i);
         urlSet.add(`https://twilhem.github.io/Api-Parking/Donnee/SAE-Bike-${date}.json`);
     }
