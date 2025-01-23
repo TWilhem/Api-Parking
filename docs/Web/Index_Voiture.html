@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./effect5.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="./Calcule.js" defer></script>
+    <script src="./RecupData.js" defer></script>
     <script src="./ActionAnPar.js" defer></script>
 </head>
 
@@ -29,9 +31,8 @@
                 </select>
                 <label id="labelA" for="TypeAnalyse">Type d'analyse :</label>
                 <select id="TypeAnalyse" onchange="ChanAnalyse()">
-                    <option value="1">Pourcentage d'occupation</option>
-                    <option value="2">Pourcentage de place libre</option>
-                    <option value="3"></option>
+                    <option value="1">Pourcentage de place libre</option>
+                    <option value="2">Nombre de place libre</option>
                 </select>
             </div>
         </div>

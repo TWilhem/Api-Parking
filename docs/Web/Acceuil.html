@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./effect7.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./RecupData.js"></script>
     <script src="./Action1.js" defer></script>
+    <script src="./Calcule.js" defer></script>
 </head>
 <body>
 <div class="container">
@@ -25,17 +27,21 @@
     </section>
     <section class="Main">
         <div class="Titre">
+            <button id="toggleLeft">☰</button>
             <p>Map Parking</p>
+            <button id="toggleRight">☰</button>
         </div>
         <div class="Map" id="map">
         </div>
-        <div class="Distance">
-            <p>Distance Parking Voiture-Velo</p>
-            <div class="Slider">
-                <input type="range" min="0" max="10000" step="250" value="0" id="slider">
-                <p id="PSlide">0 m</p>
-            </div>
-            <div class="NomP">
+        <div class="Option">
+            <div class="Distance">
+                <p>Distance Parking Voiture-Velo</p>
+                <div class="Slider">
+                    <input type="range" min="0" max="10000" step="250" value="0" id="slider">
+                    <p id="PSlide">0 m</p>
+                </div>
+                <div class="NomP">
+                </div>
             </div>
         </div>
     </section>
@@ -47,6 +53,7 @@
             <ul>
                 <li><a href="./Index_Voiture.html">Analyse Parking Voiture</a></li>
                 <li><a href="./Index_Velo.html">Analyse Parking Velo</a></li>
+                <li><a href="./Heatmap.html">Heatmap</a></li>
             </ul>
         </div>
         <div class="Erreur">
@@ -54,7 +61,6 @@
                 <p>Erreur</p>
             </div>
             <ul>
-                <li></li>
             </ul>
         </div>
     </section>

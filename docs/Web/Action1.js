@@ -27,79 +27,109 @@ var circleOptions = {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0
-}
-
+};
 
 let selectedCarIndex = null;
 let selectedBikeIndex = null;
-
-function fetchAndPopulate(url, elementId, icon) {
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const uniqueDataMap = new Map();
-            data.forEach(item => {
-                const key = item.name || item.id;
-                if (!uniqueDataMap.has(key) || uniqueDataMap.get(key).date < item.date) {
-                    uniqueDataMap.set(key, item);
-                }
-            });
-            const uniqueData = Array.from(uniqueDataMap.values());
-            populateInfoHTML(elementId, uniqueData, icon);
-        })
-        .catch(error => console.error('Erreur lors du chargement des données:', error));
-}
-
-fetchAndPopulate('https://twilhem.github.io/Api-Parking/Donnee/SAE-Car-09-2024.json', 'ParkingDataVoiture', CarIcon);
-fetchAndPopulate('https://twilhem.github.io/Api-Parking/Donnee/SAE-Bike-09-2024.json', 'ParkingDataVelo', BikeIcon);
-
 let markers = {};
+let circles = [];
+let latLng = null;
+
 function populateInfoHTML(elementId, datasets) {
     let infoHTML = '';
     const container = document.getElementById(elementId);
-    infoHTML += "<ul>"
-    datasets.forEach(function(dataset, index) {
+    const erreurContainer = document.querySelector('.Erreur ul');
+    infoHTML += "<ul>";
+    datasets.forEach((dataset, index) => {
         var Icon = elementId === 'ParkingDataVoiture' ? CarIcon : BikeIcon;
         var marker = L.marker([dataset.longitude, dataset.latitude], {icon: Icon}).addTo(map);
 
-        let className = dataset.hasOwnProperty('id') ? 'parking-id' : 'parking-name';
-        let content = dataset.hasOwnProperty('id') ? dataset.id : dataset.name;
-        let VorV = dataset.hasOwnProperty('id') ? 'Velo' : 'Voiture';
+        console.log(dataset)
+        let className = dataset.Who === 'Velo' ? 'parking-id' : 'parking-name';
+        console.log(className)
+        let content = dataset.parkingName;
+        console.log(content)
+        let VorV = dataset.Who;
+        console.log(VorV)
+
+        const totalSpotNumber = dataset.data[0]?.nombreTotalSpot || 0;
+        const moyenne = dataset.MoyenneOccupation || 0;
+        const variance = dataset.VarianceOccupation || 0;
+        const ecartType = dataset.ecartTypeOccupation || 0;
 
         let markerId;
         let DivMetre = "";
         if (VorV === 'Velo') {
             let match = content.match(/\d{3}$/);
             markerId = match ? match[0] : index;
-            content = `Station:${match[0]}`
+            content = `Station:${match[0]}`;
             DivMetre = `
-                <div id="MetreInt">
-                    <div id="Metre-${match}"></div>
+                <div id=\"MetreInt\">
+                    <div id=\"Metre-${match}\"></div>
                 </div>
-                `
+                `;
         } else {
             markerId = index;
         }
 
+        let MathsAnalyse = "";
+        MathsAnalyse = `
+            <div class=\"Maths\">
+                <p>Capacité : ${totalSpotNumber}</p>
+                <p>Moyenne : ${moyenne.toFixed(2)}</p>
+                <p>Variance : ${variance.toFixed(2)}</p>
+                <p>Écart-type : ${ecartType.toFixed(2)}</p>
+            </div>
+        `;
+
+        if ((variance === 0 && ecartType === 0) || (moyenne === 0 || moyenne < (totalSpotNumber/100)*10)) {
+            const erreurItem = `
+                <li>
+                    <p>Erreur Parking ${content} :<br> 
+                        ${(variance === 0 && ecartType === 0) ? '- Variance et Écart-type sont nuls' : ''}
+                        ${(moyenne === 0 || moyenne < (totalSpotNumber / 100) * 10) ? 
+                            (variance === 0 && ecartType === 0 ? '<br>' : '') + 
+                            '- il y a moins de 10% de place en moyenne' : ''}
+                    </p>
+                </li>
+            `;
+            erreurContainer.innerHTML += erreurItem;
+        }
+
         let onclick = "";
         if (VorV === 'Voiture') {
-            onclick = `onclick="toggleDataset('${VorV}', ${index}, this)"`
+            onclick = `onclick=\"toggleDataset('${VorV}', ${index}, this)\"`;
         }
 
         markers[`${VorV}-${markerId}`] = marker;
         marker.bindPopup("<b>" + content + "</b>");
         infoHTML += `
-            <li ${onclick} id="${VorV}-${VorV === "Velo" ? content.match(/\d{3}$/) : index}">
-                <span class="${className}">${content}</span>
+            <li ${onclick} id=\"${VorV}-${VorV === "Velo" ? content.match(/\d{3}$/) : index}\">\n
+                <span class=\"${className}\">${content}<br></span>
+                ${MathsAnalyse}
                 ${DivMetre}
             </li>`;
     });
-    infoHTML += "</ul>"
+    infoHTML += "</ul>";
     container.innerHTML = infoHTML;
 }
 
-let circles = [];
-let latLng = null;
+function fetchAndPopulateVoitures() {
+    const urls = genererURLsVoiture(2); // Génère les URLs des données des voitures
+    getFilteredDataVoiture(urls).then(parkingData => {
+        populateInfoHTML('ParkingDataVoiture', parkingData);
+    }).catch(error => console.error('Erreur lors du chargement:', error));
+}
+
+function fetchAndPopulateVelos() {
+    const urls = genererURLsVelo(2); // Génère les URLs des données des vélos
+    getFilteredDataVelo(urls).then(parkingData => {
+        populateInfoHTML('ParkingDataVelo', parkingData);
+    }).catch(error => console.error('Erreur lors du chargement:', error));
+}
+
+fetchAndPopulateVoitures();
+fetchAndPopulateVelos();
 
 function toggleDataset(VorV, index, element) {
     if (VorV === 'Voiture') {
@@ -125,19 +155,19 @@ function toggleDataset(VorV, index, element) {
                 map.flyTo([latLng.lat, latLng.lng], 14);
             }
         }
-        
-        const Bid = event.target.id;
-        const texte = element.innerText;
+
+        const parkingNameElement = element.querySelector('.parking-name');
+        const parkingNameText = parkingNameElement ? parkingNameElement.textContent.trim() : '';
         const NomP = document.querySelector('.NomP');
         const ExiParking = NomP.querySelector('#ParkingS');
         if (ExiParking) {
             if (currentColor === 'rgb(255, 0, 0)') {
                 ExiParking.remove(); 
             } else {
-                ExiParking.innerText = texte;
+                ExiParking.innerText = parkingNameText;
             }
         } else if (currentColor !== 'rgb(255, 0, 0)') {
-            NomP.innerHTML += `<p id="ParkingS">${texte}</p>`;
+            NomP.innerHTML += `<p id=\"ParkingS\">${parkingNameText}</p>`;
         }
     const RdispVelo = document.querySelectorAll('[style*="display: block"]');
     RdispVelo.forEach(RdispVelo => {
@@ -157,7 +187,6 @@ slider.addEventListener('input', function() {
 
 function AjoutCercle() {
     const slider = document.getElementById('slider');
-    const PSlide = document.getElementById('PSlide');
     const value = slider.value;
 
     if (latLng === null) {
@@ -192,7 +221,6 @@ function TDistance (lat1, lon1, lat2, lon2) {
 
 function highlightBikesInCircle() {
     const radius = parseInt(slider.value);
-    const bikesInCircle = [];
 
     Object.entries(markers).forEach(([key, marker]) => {
         if (key.startsWith('Velo-')) {
@@ -200,7 +228,7 @@ function highlightBikesInCircle() {
             let match = key.match(/\d{3}$/);
             const Metre = document.getElementById(`Metre-${match}`);
             if (distance <= radius) {
-                Metre.textContent = `${distance.toFixed(2)} m`;
+                Metre.textContent = `Distance: ${distance.toFixed(2)} m`;
             } else if (distance >= radius) {
                 Metre.textContent = '';
             }
@@ -212,8 +240,8 @@ function highlightBikesInCircle() {
 
     // Trier les éléments li en fonction des valeurs
     lis.sort((a, b) => {
-        const valueA = a.querySelector('#MetreInt > div')?.textContent.trim() || '50000';
-        const valueB = b.querySelector('#MetreInt > div')?.textContent.trim() || '50000';
+        const valueA = a.querySelector('#MetreInt > div')?.textContent.replace('Distance:', '').trim() || '50000';
+        const valueB = b.querySelector('#MetreInt > div')?.textContent.replace('Distance:', '').trim() || '50000';
         return parseInt(valueA) - parseInt(valueB);
     });
     ul.innerHTML = '';
@@ -233,3 +261,22 @@ function highlightBikesInCircle() {
         }
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const leftSection = document.querySelector(".Left");
+    const rightSection = document.querySelector(".Right");
+    const toggleLeftButton = document.getElementById("toggleLeft");
+    const toggleRightButton = document.getElementById("toggleRight");
+
+    toggleLeftButton.addEventListener("click", () => {
+        leftSection.classList.toggle("visible");
+        rightSection.classList.remove("visible");
+    });
+
+    toggleRightButton.addEventListener("click", () => {
+        rightSection.classList.toggle("visible");
+        leftSection.classList.remove("visible");
+    });
+});
+

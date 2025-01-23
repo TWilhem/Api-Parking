@@ -1,6 +1,8 @@
 let chart;
 let urls;
 let allHidden = false;
+let MaxInit = 0;
+let FormatageDate = {};
 
 // Permet l'affichage du mobileMeni
 function toggleMenu() {
@@ -8,41 +10,33 @@ function toggleMenu() {
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// Prend les valeurs de la liste Date
-function Temps() {
-    let selectElement = document.getElementById("timePeriod");
-    let selectedValue = parseInt(selectElement.value) + 1;
-    return selectedValue;
-}
-
-// Donne la date d'hier en ne renvoyant que Mois et Année sans affiché le jour
-function Aujourdhui(jAjout = 0) {
-    const maintenant = new Date();
-    maintenant.setDate(maintenant.getDate() + jAjout);
-    const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
-    const annee = maintenant.getFullYear();
-    console.log(`${mois}/${annee}`);
-    return `${mois}-${annee}`;
-}
-
-// Donne toutes les Urls nécessaires a la date d'affichage
-function genererURLs(NbJour = 2) {
-    const urlSet = new Set();
-    for (let i = 1; i < NbJour; i++) {
-        const date = Aujourdhui(-i);
-        urlSet.add(`https://twilhem.github.io/Api-Parking/Donnee/SAE-Car-${date}.json`);
-    }
-    return Array.from(urlSet); 
-}
-
 // Initie les fonctions
 function ChanUrl(){
-    urls = genererURLs(Temps());
+    let Time = Temps()
+    if (Time === 1) {
+        FormatageDate = {
+            parser: 'dd/MM/yyyy HH:mm:ss',
+            unit: 'hour', 
+            displayFormats: {
+                hour: 'HH:mm'
+            }
+        }
+    } else if (Time > 1) {
+        FormatageDate = {
+            parser: 'dd/MM/yyyy HH:mm:ss',
+            unit: 'day',
+            displayFormats: {
+                day: 'dd/MM'
+            }
+        }
+    }
+    urls = genererURLsVoiture(Time);
     console.log("URLs mises à jour:", urls);
     updateChart();
 }
 
 let num = 0
+let Max = 0;
 function ChanAnalyse() {
     num += 1
     let TypeE = document.getElementById("TypeAnalyse");
@@ -53,115 +47,111 @@ function ChanAnalyse() {
         Max = 100
     } else if (TypeS === 2) {
         calculateTypeV = (entry) => `${Math.round(entry.availableSpotNumber)}`;
-        Max = 500
+        Max = MaxInit
     }
     window.currentCalculateTypeV = calculateTypeV;
     window.Max = Max;
     updateChart()
 }
 
+function initializeMaxInit(parkingData) {
+    MaxInit = Math.max(
+        ...parkingData.map(parking => 
+            parking.data.map(entry => entry.nombreTotalSpot)
+        ).flat()
+    );
+    console.log("MaxInit calculé une seule fois:", MaxInit);
+    window.MaxInit = MaxInit;
+}
+
 
 ChanUrl()
 ChanAnalyse()
 
-
 // Affiche le Graph en fonction des valeurs prise dans les fichiers SAE-Car
 function updateChart() {
-    Promise.all(urls.map(url => fetch(url).then(response => response.json())))
-        .then(allData => {
-                const donneesCombinees = allData.flat();
-                const dates = [...new Set(donneesCombinees.map(entry => entry.Date))].sort((a, b) => {
-                    const [dayA, monthA, yearA] = a.split('/').map(Number);
-                    const [dayB, monthB, yearB] = b.split('/').map(Number);
-                    return new Date(yearA, monthA, dayA) - new Date(yearB, monthB, dayB);
-                });
+    getFilteredDataVoiture(urls)
+        .then(parkingData => {
+            if (MaxInit === 0) {
+                initializeMaxInit(parkingData);
+            }
+            // Construire les datasets pour le graphe
+            const datasets = parkingData.map(parking => ({
+                label: parking.parkingName,
+                data: parking.data.map(entry => ({
+                    x: `${entry.date} ${entry.hour}`,
+                    y: window.currentCalculateTypeV({ 
+                        availableSpotNumber: entry.nombreSpotavailable, 
+                        totalSpotNumber: entry.nombreTotalSpot,
+                    }),
+                })),
+                Moyenne: parking.MoyenneOccupation,
+                Variance: parking.VarianceOccupation,
+                ecartType: parking.ecartTypeOccupation,
+                borderColor: getRandomColor(),
+                fill: false,
+                hidden: false,
+                tension: 0.4
+            }));
 
-                const last7CompleteDates = dates.slice(- Temps(),- 1);
-                console.log(last7CompleteDates)
-                const filteredData = donneesCombinees.filter(entry => last7CompleteDates.includes(entry.Date));
-                
-                const parkingNames = [...new Set(filteredData.map(entry => entry.name))];
-                console.log(parkingNames)
+            // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
+            populateInfoHTML('parkingInfo', datasets);
+            populateInfoHTML('mobileParkingInfo', datasets);
 
-                const datasets = parkingNames.map(name => {
-                    const parkingEntries = filteredData.filter(entry => entry.name === name);
-                    return {
-                        label: name,
-                        data: parkingEntries.map(entry => ({
-                            x: `${entry.Date} ${entry.Hour}`,
-                            y: window.currentCalculateTypeV(entry)
-                        })),
-                        borderColor: getRandomColor(),
-                        fill: false,
-                        hidden: false,
-                        tension: 0.4
-                    };
-                });
+            // Detruire ancien graphique si il existe
+            if (chart) {
+                chart.destroy();
+            }
+            console.log(window.Max)
 
-                // Remplit les éléments de liste pour parkingInfo et mobileParkingInfo
-                populateInfoHTML('parkingInfo', datasets);
-                populateInfoHTML('mobileParkingInfo', datasets);
-
-                // Detruire ancien graphique si il existe
-                if (chart) {
-                    chart.destroy();
-                }
-                console.log(window.Max)
-
-                // Configuration du graphique
-                const config = {
-                    type: 'line',
-                    data: { datasets },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            x: {
-                                type: 'time',
-                                time: {
-                                    parser: 'dd/MM/yyyy HH:mm:ss',
-                                    unit: 'hour',
-                                    displayFormats: {
-                                        hour: 'HH:mm'
-                                    }
-                                },
-                                title: {
-                                    display: true,
-                                    text: `Jour (${last7CompleteDates.join(', ')})`
-                                }
-                            },
-                            y: {
-                                title: {
-                                    display: true,
-                                    text: 'Places disponibles (%)'
-                                },
-                                beginAtZero: true,
-                                max: window.Max
-                            }
-                        },
-                        plugins: {
+            // Configuration du graphique
+            const config = {
+                type: 'line',
+                data: { datasets },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: FormatageDate,
                             title: {
                                 display: true,
-                                text: `Disponibilité des places de parking pour les jours ${last7CompleteDates} derniers jours`
-                            },
-                            legend: {
-                                display: false
+                                text: `Données des ${Temps()} derniers jours`
                             }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Places disponibles (%)'
+                            },
+                            beginAtZero: true,
+                            max: window.Max
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `Disponibilité des places pour les ${Temps()} derniers jours`
+                        },
+                        legend: {
+                            display: false
                         }
                     }
-                };
-                
-                // Specifie ou crée le Graph
-                const ctx = document.getElementById('myChart').getContext('2d');
-                chart = new Chart(ctx, config);
-            })
+                }
+            };
+            
+            // Specifie ou crée le Graph
+            const ctx = document.getElementById('myChart').getContext('2d');
+            chart = new Chart(ctx, config);
+        })
 
-        // Regarde si il y a des erreurs sur la formation des fichiers JSON
-        .catch(error => {
-            console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
-            if (error instanceof SyntaxError) {
-                console.error('Le fichier JSON est mal formaté');
-            }
-        });
+    // Regarde si il y a des erreurs sur la formation des fichiers JSON
+    .catch(error => {
+        console.error('Erreur lors du chargement ou du traitement du fichier JSON:', error);
+        if (error instanceof SyntaxError) {
+            console.error('Le fichier JSON est mal formaté');
+        }
+    });
 }
 
 // Fonction pour créer la liste cliquable dans les zones parkingInfo et mobileParkingInfo
@@ -169,10 +159,22 @@ function populateInfoHTML(elementId, datasets) {
     const container = document.getElementById(elementId);
     let infoHTML = `<button id="${elementId === 'parkingInfo' ? 'toggleAllButton' : 'mobileToggleAllButton'}" onclick="toggleAllDatasets()">Tout afficher/masquer</button><ul>`;
     datasets.forEach((dataset, index) => {
+        // Récupération des statistiques depuis les datasets
+        const moyenne = dataset.Moyenne || 0;
+        const variance = dataset.Variance || 0;
+        const ecartType = dataset.ecartType || 0;
+
         infoHTML += `
         <li onclick="toggleDataset(${index})">
-            <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
-            <span class="parking-name ${dataset.hidden ? 'hidden' : ''}">${dataset.label}</span>
+            <div class="Name">
+                <span class="color-indicator" style="background-color: ${dataset.borderColor};"></span>
+                <span class="parking-name ${dataset.hidden ? 'hidden' : ''}">${dataset.label}</span>
+            </div>
+            <div class="stats">
+                <p>Moyenne : ${moyenne.toFixed(2)}</p>
+                <p>Variance : ${variance.toFixed(2)}</p>
+                <p>Écart-type : ${ecartType.toFixed(2)}</p>
+            </div>
         </li>`;
     });
     infoHTML += '</ul>';

@@ -71,8 +71,7 @@ body {
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
+    display: block;
     transition: background-color 0.3s;
 }
 
@@ -81,15 +80,16 @@ body {
 }
 
 .color-indicator {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    margin-right: 10px;
+    display: inline-block;
 }
 
 .parking-name.hidden {
     text-decoration: line-through;
     color: #999;
+    font-weight: bold;
 }
 
 #toggleAllButton, #mobileToggleAllButton {
@@ -121,6 +121,17 @@ body {
 #labelA {
     margin-left: 20px;
 }
+
+.stats {
+    margin-left: 18px; 
+    font-size: 14px;
+    color: #555;
+}
+
+.stats p {
+    margin: 2px 0;
+}
+
 
 
 @media (max-width: 1024px) {
