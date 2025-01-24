@@ -34,7 +34,7 @@ body, html {
     height: 6500px;
 }
 
-.TitreParkingDataVoiture, .TitreParkingDataVelo {
+.TitreParkingDataVoiture, .TitreParkingDataVelo, .TitreErreur, .TitreLien {
     height: 5%;
     background-color: rgb(43, 43, 43);
     text-align: center;
@@ -44,20 +44,20 @@ body, html {
     align-items: center;
 }
 
-.ParkingDataVoiture, .ParkingDataVelo, .Erreur ul, .Lien ul {
+.ParkingDataVoiture, .ParkingDataVelo, .ListeErreur, .ListeLien {
     background-color: grey;
     padding: 10px;
-    overflow-y: auto;
+    overflow-y: scroll;
     scrollbar-width: none;
 }
 
-#ParkingDataVoiture ul, #ParkingDataVelo ul, .Erreur li, .Lien li {
+#ParkingDataVoiture ul, #ParkingDataVelo ul, .ListeErreur ul, .ListeLien ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-#ParkingDataVoiture li, #ParkingDataVelo li, .Erreur li, .Lien li {
+#ParkingDataVoiture li, #ParkingDataVelo li, .ListeErreur li, .ListeLien li {
     margin: 5px 0;
     padding: 10px;
     border-radius: 8px;
@@ -71,7 +71,7 @@ body, html {
 #MetreInt {
     margin-top: 5px;
     float: right;
-    width: 75%;
+    padding: 5px;
     height: 25%;
     background-color: tomato;
     border-radius: 8px;
@@ -80,7 +80,7 @@ body, html {
     display: none;
 }
 
-#ParkingDataVoiture li, #ParkingDataVelo li {
+#ParkingDataVoiture li, #ParkingDataVelo li, .ListeErreur li, .ListeLien li{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -151,7 +151,7 @@ body, html {
     border-top-left-radius: 16px;
 }
 .Erreur {
-    flex-grow: 1;
+    height: 70%;
     background-color: grey;
     border-top-left-radius: 16px;
 }
@@ -162,6 +162,13 @@ body, html {
     color: inherit;
     text-decoration: none;
 }
+
+.ListeErreur, .ListeLien{
+    height: calc(100% - 5px);
+}
+
+
+
 
 
 

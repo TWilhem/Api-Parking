@@ -42,16 +42,13 @@ function populateInfoHTML(elementId, datasets) {
     infoHTML += "<ul>";
     datasets.forEach((dataset, index) => {
         var Icon = elementId === 'ParkingDataVoiture' ? CarIcon : BikeIcon;
-        var marker = L.marker([dataset.longitude, dataset.latitude], {icon: Icon}).addTo(map);
+        var marker = L.marker([dataset.latitude, dataset.longitude], {icon: Icon}).addTo(map);
 
-        console.log(dataset)
         let className = dataset.Who === 'Velo' ? 'parking-id' : 'parking-name';
-        console.log(className)
         let content = dataset.parkingName;
-        console.log(content)
         let VorV = dataset.Who;
-        console.log(VorV)
 
+        const Status = dataset.status
         const totalSpotNumber = dataset.data[0]?.nombreTotalSpot || 0;
         const moyenne = dataset.MoyenneOccupation || 0;
         const variance = dataset.VarianceOccupation || 0;
@@ -86,10 +83,9 @@ function populateInfoHTML(elementId, datasets) {
             const erreurItem = `
                 <li>
                     <p>Erreur Parking ${content} :<br> 
-                        ${(variance === 0 && ecartType === 0) ? '- Variance et Écart-type sont nuls' : ''}
-                        ${(moyenne === 0 || moyenne < (totalSpotNumber / 100) * 10) ? 
-                            (variance === 0 && ecartType === 0 ? '<br>' : '') + 
-                            '- il y a moins de 10% de place en moyenne' : ''}
+                        ${(variance === 0 && ecartType === 0) ? '- Variance et Écart-type sont nuls <br>' : ''}
+                        ${(moyenne === 0 || moyenne < (totalSpotNumber / 100) * 10) ? '- il y a moins de 10% de place en moyenne <br>' : ''}
+                        ${(Status === "Open" || Status === "working" ? "" : "color: red;") ? '- il y a moins de 10% de place en moyenne <br>' : ''}
                     </p>
                 </li>
             `;
@@ -105,7 +101,7 @@ function populateInfoHTML(elementId, datasets) {
         marker.bindPopup("<b>" + content + "</b>");
         infoHTML += `
             <li ${onclick} id=\"${VorV}-${VorV === "Velo" ? content.match(/\d{3}$/) : index}\">\n
-                <span class=\"${className}\">${content}<br></span>
+                <span class=\"${className}\" style="${Status === "Open" || Status === "working" ? "" : "color: red;"}">${content}<br></span>
                 ${MathsAnalyse}
                 ${DivMetre}
             </li>`;
@@ -256,8 +252,6 @@ function highlightBikesInCircle() {
             } else {
                 HideAndSeek.style.display = "none";
             }
-            const value = nestedDiv.textContent.trim();
-            console.log(value);
         }
     });
 }

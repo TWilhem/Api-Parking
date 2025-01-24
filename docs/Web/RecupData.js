@@ -71,8 +71,8 @@ function getFilteredDataVoiture(urls) {
                     MoyenneOccupation: moyenneOccupation,
                     VarianceOccupation: VarianceOccupation,
                     ecartTypeOccupation: ecartTypeOccupation,
-                    longitude: longitude,
-                    latitude: latitude,
+                    longitude: latitude,
+                    latitude: longitude,
                     status: status,
                     Who: "Voiture",
                 };
@@ -144,8 +144,8 @@ function getFilteredDataVelo(urls) {
                     MoyenneOccupation: moyenneOccupation,
                     VarianceOccupation: VarianceOccupation,
                     ecartTypeOccupation: ecartTypeOccupation,
-                    longitude: longitude,
-                    latitude: latitude,
+                    longitude: latitude,
+                    latitude: longitude,
                     status: status,
                     Who: "Velo",
                 };
