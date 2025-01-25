@@ -111,7 +111,7 @@ function getFilteredDataVelo(urls) {
             });
 
             // Récupérer les dernières dates complètes en fonction de la fonction Temps()
-            const lastNCompleteDates = dates.slice(-Temps());
+            const lastNCompleteDates = dates.slice(-Temps() - 1, -1);
             console.log("Dernières dates complètes :", lastNCompleteDates);
 
             // Filtrer les données pour ne garder que celles correspondant aux dernières dates
