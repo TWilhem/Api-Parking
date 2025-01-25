@@ -10,7 +10,7 @@ function toggleMenu() {
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// Initie les fonctions
+// Initie les fonctions et donne l'echelle de temps
 function ChanUrl(){
     let Time = Temps()
     if (Time === 1) {
@@ -35,6 +35,7 @@ function ChanUrl(){
     updateChart();
 }
 
+// Permet de switch le type d'analyse
 let num = 0
 let Max = 0;
 function ChanAnalyse() {
@@ -54,6 +55,7 @@ function ChanAnalyse() {
     updateChart()
 }
 
+// Trouve la plus grande valeur du nombre total de place
 function initializeMaxInit(parkingData) {
     MaxInit = Math.max(
         ...parkingData.map(parking => 
