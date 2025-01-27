@@ -54059,5 +54059,23 @@
             "station:053 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "27/01/2025 20:18:11",
+        "Erreur": [
+            "Corum less than 10%",
+            "station:007 less than 10%",
+            "station:008 less than 10%",
+            "station:016 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:034 less than 10%",
+            "station:038 less than 10%",
+            "station:045 less than 10%",
+            "station:046 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
