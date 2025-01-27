@@ -53377,5 +53377,29 @@
             "station:057 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "27/01/2025 10:24:23",
+        "Erreur": [
+            "Sabines less than 10%",
+            "Charles de Gaulle less than 10%",
+            "station:008 less than 10%",
+            "station:013 less than 10%",
+            "station:015 less than 10%",
+            "station:019 less than 10%",
+            "station:023 less than 10%",
+            "station:026 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:038 less than 10%",
+            "station:043 less than 10%",
+            "station:044 less than 10%",
+            "station:046 less than 10%",
+            "station:049 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:057 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
