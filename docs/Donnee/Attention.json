@@ -64124,5 +64124,24 @@
             "station:051 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "04/02/2025 12:56:47",
+        "Erreur": [
+            "Occitanie less than 10%",
+            "Gaumont OUEST less than 10%",
+            "Charles de Gaulle less than 10%",
+            "station:010 less than 10%",
+            "station:024 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:030 less than 10%",
+            "station:032 less than 10%",
+            "station:036 less than 10%",
+            "station:038 less than 10%",
+            "station:042 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
