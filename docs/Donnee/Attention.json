@@ -65542,5 +65542,21 @@
             "station:051 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "05/02/2025 16:30:19",
+        "Erreur": [
+            "Charles de Gaulle less than 10%",
+            "station:009 less than 10%",
+            "station:010 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:035 less than 10%",
+            "station:044 less than 10%",
+            "station:048 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
