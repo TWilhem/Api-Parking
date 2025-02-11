@@ -74616,5 +74616,21 @@
             "station:051 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "11/02/2025 12:58:16",
+        "Erreur": [
+            "Gaumont OUEST less than 10%",
+            "Arc de Triomphe less than 10%",
+            "station:010 less than 10%",
+            "station:011 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:037 less than 10%",
+            "station:040 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
