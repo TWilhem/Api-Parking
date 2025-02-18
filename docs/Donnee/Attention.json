@@ -84662,5 +84662,22 @@
             "station:037 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "18/02/2025 14:33:56",
+        "Erreur": [
+            "Euromedecine less than 10%",
+            "Gaumont OUEST less than 10%",
+            "Arc de Triomphe less than 10%",
+            "station:007 less than 10%",
+            "station:011 less than 10%",
+            "station:024 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:037 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
