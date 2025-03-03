@@ -74,7 +74,9 @@ try:
                     "Hour": Hour(),
                 }
                 Liste_Car.append(car)
-                if (data['availableSpotNumber']['value']/data['totalSpotNumber']['value'])*100 <= 10:
+                if data['totalSpotNumber']['value'] == 0:
+                    AttentionE.append(f"{data['name']['value']} erreur totalSpotNumber == 0")
+                elif (data['availableSpotNumber']['value']/data['totalSpotNumber']['value'])*100 <= 10:
                     AttentionE.append(f"{data['name']['value']} less than 10%")
             except KeyError:
                 continue
