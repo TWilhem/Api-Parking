@@ -12,28 +12,22 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /var/www/html
 
 # Copier le projet dans le conteneur
-COPY ./docs/Donnee /var/www/html/Donnee
-COPY ./docs/Image /var/www/html/Image
-COPY ./docs/Web /var/www/html/Web
+COPY ./docs/Donnee /var/www/html/docs/Donnee
+COPY ./docs/Image /var/www/html/docs/Image
+COPY ./docs/Web /var/www/html/docs/Web
 
 # Copier le fichier de configuration Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Donner les permissions nécessaires
-RUN chmod -R 755 /var/www/html
-
-
-
 # Copier l'application Python et les dépendances
-WORKDIR /app
-COPY main.py /app/main.py
-COPY requirements.txt /app/requirements.txt
+COPY main.py /var/www/html/main.py
+COPY requirements.txt /var/www/html/requirements.txt
 
 # Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Donner les permissions nécessaires à main.py
-RUN chmod +x /app/main.py
+# Donner les permissions nécessaires
+RUN chmod -R 755 /var/www/html
 
 # Ajouter la tâche cron pour exécuter main.py toutes les 15 minutes
 RUN echo "*/15 * * * * root python3 /app/main.py >> /var/log/cron.log 2>&1" > /etc/cron.d/app-cron \
