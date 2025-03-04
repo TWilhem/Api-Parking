@@ -101818,5 +101818,25 @@
             "station:053 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "04/03/2025 12:30:33",
+        "Erreur": [
+            "Pitot erreur totalSpotNumber == 0",
+            "Euromedecine less than 10%",
+            "Gaumont OUEST less than 10%",
+            "station:012 less than 10%",
+            "station:023 less than 10%",
+            "station:025 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:030 less than 10%",
+            "station:032 less than 10%",
+            "station:036 less than 10%",
+            "station:046 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
