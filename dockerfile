@@ -15,7 +15,7 @@ RUN gem install jekyll bundler
 WORKDIR /var/www/html
 
 # Copier le projet dans le conteneur
-COPY ./docs/Web /var/www/html
+COPY ./docs /var/www/html
 
 # Copier le fichier de configuration Nginx
 COPY nginx.conf /etc/nginx/nginx.conf

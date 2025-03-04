@@ -45,7 +45,6 @@ unzip repo.zip
 mv Api-Parking-main "$LOCAL_DIR"
 rm repo.zip
 rm -rf ./Api-Parking/docs/Analyse 
-rm -rf ./Api-Parking/docs/Image
 rm -rf ./Api-Parking/TP
 rm ./Api-Parking/Erreur.log
 rm ./Api-Parking/requirements.txt
