@@ -17,6 +17,9 @@ WORKDIR /var/www/html
 # Copier le projet dans le conteneur
 COPY ./docs /var/www/html
 
+# Construire le site Jekyll
+RUN jekyll build --source /var/www/html --destination /var/www/html/_site
+
 # Copier le fichier de configuration Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
