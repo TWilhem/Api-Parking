@@ -47,7 +47,6 @@ rm repo.zip
 rm -rf ./Api-Parking/docs/Analyse 
 rm -rf ./Api-Parking/TP
 rm ./Api-Parking/Erreur.log
-rm ./Api-Parking/requirements.txt
 
 # Construire l'image Docker
 echo "Construction de l'image Docker..."
