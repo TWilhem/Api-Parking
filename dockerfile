@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 # Installer Jekyll
 RUN gem install jekyll bundler
+RUN gem install jekyll-remote-theme
 
 # Définir le répertoire de travail
 WORKDIR /var/www/html
