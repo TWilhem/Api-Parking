@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 # Installer Jekyll
 RUN gem install jekyll bundler
+RUN gem install jekyll-sass-converter -v 3.0.0
 RUN gem install jekyll-remote-theme
 
 # Définir le répertoire de travail
@@ -19,7 +20,8 @@ WORKDIR /var/www/html
 COPY ./docs /var/www/html
 
 # Construire le site Jekyll
-RUN jekyll build --source /var/www/html --destination /var/www/html/_site
+RUN jekyll build --source /var/www/html --destination /var/www/html/_site || \
+    (echo "Échec du build Jekyll" && exit 1)
 
 # Copier le fichier de configuration Nginx
 COPY nginx.conf /etc/nginx/nginx.conf
