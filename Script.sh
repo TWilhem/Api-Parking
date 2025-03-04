@@ -4,8 +4,8 @@
 GITHUB_REPO="https://github.com/TWilhem/Api-Parking"
 ZIP_URL="$GITHUB_REPO/archive/refs/heads/main.zip"
 LOCAL_DIR="Api-Parking"
-DOCKER_IMAGE="frontend-app"
-DOCKER_CONTAINER="frontend-app"
+DOCKER_IMAGE="frontend"
+DOCKER_CONTAINER="Application"
 
 # Vérifier et installer les paquets nécessaires (Docker, curl, unzip)
 echo "Vérification des dépendances..."
@@ -52,17 +52,18 @@ rm ./Api-Parking/requirements.txt
 
 # Construire l'image Docker
 echo "Construction de l'image Docker..."
-docker build -t "$DOCKER_IMAGE" "$LOCAL_DIR"
+docker build -t "$DOCKER_IMAGE" "$LOCAL_DIR" || { echo "Échec de la construction de l'image"; exit 1; }
 
 # Vérifier si le conteneur existe déjà et le supprimer si nécessaire
 if [ "$(docker ps -aq -f name=$DOCKER_CONTAINER)" ]; then
-    echo "Suppression de l'ancien conteneur..."
-    docker rm -f "$DOCKER_CONTAINER"
+    echo "Arrêt et suppression de l'ancien conteneur..."
+    docker stop "$DOCKER_CONTAINER" 2>/dev/null
+    docker rm "$DOCKER_CONTAINER" 2>/dev/null
 fi
 
 # Lancer un nouveau conteneur
 echo "Lancement du conteneur..."
-docker run -d --name "$DOCKER_CONTAINER" "$DOCKER_IMAGE"
+docker run -d -p 8080:80 --name "$DOCKER_CONTAINER" "$DOCKER_IMAGE" || { echo "Échec du lancement du conteneur"; exit 1; }
 
 echo "Déploiement terminé !"
 
