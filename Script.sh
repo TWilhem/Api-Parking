@@ -181,6 +181,10 @@ if [[ ${selected[0]} -eq 1 ]]; then
     rm -rf ./Api-Parking/Donnee
 fi
 
+# Générer le fichier nginx.conf avec le bon port
+echo "Configuration de Nginx avec le port $docker_port..."
+sed "s/\$PORT/$docker_port/g" nginx.conf.template > "$LOCAL_DIR/nginx.conf"
+
 # Construire l'image Docker
 echo "Construction de l'image Docker..."
 docker build -t "$DOCKER_IMAGE" "$LOCAL_DIR" || { echo "Échec de la construction de l'image"; exit 1; }
