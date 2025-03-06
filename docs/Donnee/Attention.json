@@ -104782,5 +104782,23 @@
             "station:049 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "06/03/2025 17:48:13",
+        "Erreur": [
+            "Pitot erreur totalSpotNumber == 0",
+            "station:007 less than 10%",
+            "station:012 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:036 less than 10%",
+            "station:038 less than 10%",
+            "station:045 less than 10%",
+            "station:046 less than 10%",
+            "station:049 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
