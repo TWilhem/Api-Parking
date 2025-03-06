@@ -1,0 +1,5 @@
+# Forcer LF pour certains fichiers (ex: scripts, code source)
+*.sh text eol=lf
+
+# Laisser Git décider du format pour les autres fichiers
+* text=auto
