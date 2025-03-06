@@ -104574,5 +104574,21 @@
             "station:053 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "06/03/2025 12:57:00",
+        "Erreur": [
+            "Pitot erreur totalSpotNumber == 0",
+            "Gaumont OUEST less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:036 less than 10%",
+            "station:046 less than 10%",
+            "station:049 less than 10%",
+            "station:053 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
