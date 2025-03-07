@@ -105935,5 +105935,23 @@
             "station:053 less than 10%",
             "station:057 less than 10%"
         ]
+    },
+    {
+        "Date": "07/03/2025 15:57:06",
+        "Erreur": [
+            "Pitot erreur totalSpotNumber == 0",
+            "Arc de Triomphe less than 10%",
+            "station:012 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:031 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:044 less than 10%",
+            "station:046 less than 10%",
+            "station:049 less than 10%",
+            "station:053 less than 10%",
+            "station:057 less than 10%"
+        ]
     }
 ]
