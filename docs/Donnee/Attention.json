@@ -108100,5 +108100,30 @@
             "station:057 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "08/03/2025 20:28:28",
+        "Erreur": [
+            "Corum less than 10%",
+            "Pitot erreur totalSpotNumber == 0",
+            "Gaumont OUEST less than 10%",
+            "Arc de Triomphe less than 10%",
+            "station:004 less than 10%",
+            "station:007 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:031 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:043 less than 10%",
+            "station:046 less than 10%",
+            "station:047 less than 10%",
+            "station:048 less than 10%",
+            "station:049 less than 10%",
+            "station:053 less than 10%",
+            "station:054 less than 10%",
+            "station:057 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
