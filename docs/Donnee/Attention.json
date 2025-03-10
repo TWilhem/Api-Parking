@@ -111433,5 +111433,27 @@
             "station:054 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "10/03/2025 10:41:17",
+        "Erreur": [
+            "Sabines less than 10%",
+            "Gaumont OUEST less than 10%",
+            "station:004 less than 10%",
+            "station:012 less than 10%",
+            "station:019 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:043 less than 10%",
+            "station:045 less than 10%",
+            "station:047 less than 10%",
+            "station:048 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:054 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
