@@ -123826,5 +123826,18 @@
             "station:053 less than 10%",
             "station:060 less than 10%"
         ]
+    },
+    {
+        "Date": "19/03/2025 08:39:02",
+        "Erreur": [
+            "station:006 less than 10%",
+            "station:010 less than 10%",
+            "station:011 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:053 less than 10%",
+            "station:060 less than 10%"
+        ]
     }
 ]
