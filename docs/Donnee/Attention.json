@@ -133139,5 +133139,24 @@
             "station:053 less than 10%",
             "station:059 less than 10%"
         ]
+    },
+    {
+        "Date": "27/03/2025 16:26:24",
+        "Erreur": [
+            "Euromedecine less than 10%",
+            "station:018 less than 10%",
+            "station:021 less than 10%",
+            "station:025 less than 10%",
+            "station:026 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:032 less than 10%",
+            "station:034 less than 10%",
+            "station:036 less than 10%",
+            "station:047 less than 10%",
+            "station:048 less than 10%",
+            "station:053 less than 10%",
+            "station:059 less than 10%"
+        ]
     }
 ]
