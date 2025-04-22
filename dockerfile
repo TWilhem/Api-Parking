@@ -1,12 +1,13 @@
 # Utiliser une image de base avec Python
-FROM python:latest
+FROM alpine:latest
 
 # Installer les dépendances nécessaires
-RUN apt-get update && apt-get install -y \
+RUN apk update && apk add --no-cache \
+    python3 \
+    py3-pip \
     nginx \
-    cron \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+    busybox-extras \
+    && pip install --upgrade pip
 
 # Définir le répertoire de travail nginx
 WORKDIR /var/www/html
@@ -28,8 +29,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Donner les permissions nécessaires
 RUN chmod -R 755 /var/www/html
-
-
 
 # Exposer les ports nécessaires
 EXPOSE 80
