@@ -50,7 +50,7 @@ ask_for_crontab() {
 ask_for_port() {
     while true; do
         read -p "Entrez un port Docker (entre 1024 et 65535 ou le port 80) : " port
-        if [[ "$port" =~ ^[0-9]+$ ]] && {[ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; } || [ "$port" -eq 80 ]; then
+        if [[ "$port" =~ ^[0-9]+$ ]] && { [ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; } || [ "$port" -eq 80 ]; then
             docker_port=$port
             break
         else
