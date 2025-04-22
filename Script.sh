@@ -183,7 +183,7 @@ fi
 
 # Générer le fichier nginx.conf avec le bon port
 echo "Configuration de Nginx avec le port $docker_port..."
-sed "s|\$PORT|$docker_port|g" nginx.conf.template > "$LOCAL_DIR/nginx.conf"
+sed "s|\$PORT|$docker_port|g" "$LOCAL_DIR/nginx.conf.template" > "$LOCAL_DIR/nginx.conf"
 
 # Construire l'image Docker
 echo "Construction de l'image Docker..."
