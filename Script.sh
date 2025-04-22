@@ -132,7 +132,8 @@ done
 
 # Variables
 GITHUB_REPO="https://github.com/TWilhem/Api-Parking"
-ZIP_URL="$GITHUB_REPO/archive/refs/heads/main.zip"
+ZIP_File="$GITHUB_REPO/archive/refs/heads/main.zip"
+ZIP_Serv="$GITHUB_REPO/archive/refs/heads/Deploiement.zip"
 LOCAL_DIR="Api-Parking"
 DOCKER_IMAGE="frontend"
 DOCKER_CONTAINER="Application"
@@ -170,10 +171,16 @@ fi
 # Télécharger et extraire les fichiers sans Git
 echo "Téléchargement du projet depuis GitHub..."
 rm -rf "$LOCAL_DIR"
-wget "$ZIP_URL" -O repo.zip
-unzip repo.zip
+
+wget "$ZIP_Serv" -O Serv.zip # Télécharger et extraire les fichiers de Deploiement
+unzip Serv.zip
+rm Serv.zip
+
+wget "$ZIP_File" -O File.zip # Télécharger et extraire les codes, page web, base de donnée
+unzip File.zip
+rm File.zip
+
 mv Api-Parking-main "$LOCAL_DIR"
-rm repo.zip
 rm -rf ./Api-Parking/docs/Analyse 
 rm -rf ./Api-Parking/TP
 rm ./Api-Parking/Erreur.log
