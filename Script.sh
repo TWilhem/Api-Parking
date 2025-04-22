@@ -50,7 +50,7 @@ ask_for_crontab() {
 ask_for_port() {
     while true; do
         read -p "Entrez un port Docker (entre 1024 et 65535) : " port
-        if [[ "$port" =~ ^[0-9]+$ ]] && [ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; then
+        if [[ "$port" =~ ^[0-9]+$ ]] && {[ "$port" -ge 1024 ] && [ "$port" -le 65535 ]; } || [ "$port" -eq 80 ]; then
             docker_port=$port
             break
         else
@@ -74,16 +74,16 @@ setup_cron_in_docker() {
         esac
 
         # Ajouter le cron dans le conteneur Docker
-        docker exec "$DOCKER_CONTAINER" bash -c "echo '$cron_interval root /usr/local/bin/your-script.sh >> /var/log/cron.log 2>&1' > /etc/cron.d/your-crontab"
+        docker exec "$DOCKER_CONTAINER" bash -c "echo '$cron_interval root /usr/local/bin/python3 /var/www/html/main.py >> /var/log/cron.log 2>&1' > /etc/cron.d/Parking-Crontab"
         
         # Appliquer la crontab
-        docker exec "$DOCKER_CONTAINER" bash -c "chmod 0644 /etc/cron.d/your-crontab && crontab /etc/cron.d/your-crontab"
+        docker exec "$DOCKER_CONTAINER" bash -c "chmod 0644 /etc/cron.d/Parking-Crontab && crontab /etc/cron.d/Parking-Crontab"
         
         # Redémarrer cron pour appliquer les changements
         docker exec "$DOCKER_CONTAINER" bash -c "service cron restart"
     else
         # Si Crontab est désactivé, on supprime le fichier crontab
-        docker exec "$DOCKER_CONTAINER" bash -c "rm -f /etc/cron.d/your-crontab"
+        docker exec "$DOCKER_CONTAINER" bash -c "rm -f /etc/cron.d/Parking-Crontab"
         echo "Cron désactivé."
     fi
 }
