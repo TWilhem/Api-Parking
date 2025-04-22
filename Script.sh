@@ -181,7 +181,7 @@ unzip File.zip
 rm File.zip
 
 mv Api-Parking-main "$LOCAL_DIR"
-mv $LOCAL_DIR/Api-Parking-Deploiement/* $LOCAL_DIR/Api-Parking/
+mv ./Api-Parking-Deploiement/* ./Api-Parking/
 rm -rf ./Api-Parking-Deploiement
 rm -rf ./Api-Parking/docs/Analyse 
 rm -rf ./Api-Parking/TP
