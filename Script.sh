@@ -77,7 +77,7 @@ setup_cron_in_docker() {
         docker exec "$DOCKER_CONTAINER" bash -c "echo '$cron_interval root cd /var/www/html && /usr/bin/python3 main.py >> /var/log/cron.log 2>&1' > /etc/cron.d/Parking-Crontab"
         
         # Appliquer la crontab
-        docker exec "$DOCKER_CONTAINER" bash -c "chmod 0644 /etc/cron.d/Parking-Crontab
+        docker exec "$DOCKER_CONTAINER" bash -c "chmod 0644 /etc/cron.d/Parking-Crontab"
         
         # Redémarrer cron pour appliquer les changements
         docker exec "$DOCKER_CONTAINER" bash -c "service cron restart"
