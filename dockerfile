@@ -1,13 +1,15 @@
 # Utiliser une image de base avec Python
-FROM alpine:latest
+FROM debian:latest
 
 # Installer les dépendances nécessaires
-RUN apk update && apk add --no-cache \
+RUN apt-get update && apt-get install -y \
     python3 \
-    py3-pip \
+    python3-pip \
     nginx \
-    busybox-extras \
-    && pip install --upgrade pip
+    cron \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Définir le répertoire de travail nginx
 WORKDIR /var/www/html
