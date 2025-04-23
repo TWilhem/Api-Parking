@@ -1,8 +1,9 @@
 # Utiliser une image de base avec Python
-FROM debian:latest
+FROM debian:bookworm-slim
 
 # Installer les dépendances nécessaires
 RUN apt-get update && apt-get install -y \
+    gnupg \
     python3 \
     python3-pip \
     python3-venv \
