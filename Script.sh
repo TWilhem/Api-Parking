@@ -74,7 +74,7 @@ setup_cron_in_docker() {
         esac
 
         # Ajouter le cron dans le conteneur Docker
-        docker exec "$DOCKER_CONTAINER" bash -c "echo '$cron_interval root cd /var/www/html && /opt/venv/bin/python main.py >> /var/log/cron.log 2>&1' > /etc/cron.d/Parking-Crontab"
+        docker exec "$DOCKER_CONTAINER" bash -c "echo '$cron_interval root cd /var/www/html && /usr/local/bin/python3 main.py >> /var/log/cron.log 2>&1' > /etc/cron.d/Parking-Crontab"
         
         # Appliquer la crontab
         docker exec "$DOCKER_CONTAINER" bash -c "chmod 0644 /etc/cron.d/Parking-Crontab"

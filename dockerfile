@@ -1,17 +1,14 @@
 # Utiliser une image de base avec Python
-FROM debian:bookworm-slim
+FROM python:3.13-slim
 
-# Installer les dépendances nécessaires
+# Installer les paquets système nécessaires
 RUN apt-get update && apt-get install -y \
-    gnupg \
-    python3 \
-    python3-pip \
-    python3-venv \
     nginx \
     cron \
     curl \
     unzip \
     && rm -rf /var/lib/apt/lists/*
+
 
 # Définir le répertoire de travail nginx
 WORKDIR /var/www/html
@@ -29,8 +26,6 @@ COPY main.py /var/www/html/main.py
 COPY requirements.txt /var/www/html/requirements.txt
 
 # Créer un venv python3
-RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install --no-cache-dir -r requirements.txt
 
 
