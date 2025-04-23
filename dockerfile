@@ -26,8 +26,16 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY main.py /var/www/html/main.py
 COPY requirements.txt /var/www/html/requirements.txt
 
-# Installer les dépendances Python
+# Env python
+# Créer un venv
+RUN python3 -m venv /opt/venv
+
+# Ajouter les binaires du venv au PATH
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Installer les dépendances dans le venv
 RUN pip install --no-cache-dir -r requirements.txt
+
 
 # Donner les permissions nécessaires
 RUN chmod -R 755 /var/www/html
