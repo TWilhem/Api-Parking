@@ -106,19 +106,19 @@ setup_cron_in_docker() {
 
 # Fonction pour configurer le nom du dossier de sauvegarde du projet
 ask_for_local_dir() {
-    read -p "Entrez le chemin local pour LOCAL_DIR : " new_local_dir
+    read -p "Entrez le nom du Dossier: " new_local_dir
     LOCAL_DIR="$new_local_dir"
 }
 
 # Fonction pour configurer le nom de l'image Docker
 ask_for_image_name() {
-    read -p "Entrez le nom de l'image Docker (DOCKER_IMAGE) : " new_image
+    read -p "Entrez le nom de l'image docker: " new_image
     DOCKER_IMAGE="$new_image"
 }
 
 # Fonction pour configurer le nom du Docker
 ask_for_container_name() {
-    read -p "Entrez le nom du conteneur Docker (DOCKER_CONTAINER) : " new_container
+    read -p "Entrez le nom du container docker: " new_container
     DOCKER_CONTAINER="$new_container"
 }
 
@@ -162,6 +162,9 @@ while true; do
             done
             echo "- Delta Time: $Crontab"
             echo "- Docker Port: $docker_port"
+            echo "- Nom du Dossier: $LOCAL_DIR"
+            echo "- Nom de l'image: $DOCKER_IMAGE"
+            echo "- Nom du container: $DOCKER_CONTAINER"
             break
             ;;
     esac
