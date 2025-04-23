@@ -7,7 +7,7 @@ YELLOW='\e[33m'
 NC='\e[0m' # No Color
 
 # Options du menu
-options=("Void Data" "Delta Time" "Port docker:" "Nom du Dossier" "Nom de l'image" "Nom du container" "Cancel")
+options=("Void Data" "Delta Time" "Port docker:" "Nom du Dossier:" "Nom de l'image:" "Nom du container:" "Cancel")
 selected=(0 0 0 0)  # Tableau pour suivre les sélections
 current=0    # Index de l'option actuellement surlignée
 Crontab="15m"
@@ -198,10 +198,8 @@ sudo usermod -aG docker $USER
 
 # Redémarrer le script après ajout au groupe Docker
 if ! groups | grep -q "\bdocker\b"; then
-    echo -e "${GREEN}Ajout de l'utilisateur au groupe Docker. Redémarrage du script...${NC}"
-    newgrp docker <<EOF
-exec "$0"
-EOF
+    echo -e "${YELLOW}L'utilisateur a été ajouté au groupe docker.${NC}"
+    echo -e "${YELLOW}Veuillez vous déconnecter et vous reconnecter, ou redémarrer votre session pour que les changements prennent effet.${NC}"
     exit 0
 fi
 
