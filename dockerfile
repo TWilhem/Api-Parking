@@ -5,6 +5,7 @@ FROM debian:latest
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
+    python3-venv \
     nginx \
     cron \
     curl \
@@ -26,14 +27,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY main.py /var/www/html/main.py
 COPY requirements.txt /var/www/html/requirements.txt
 
-# Env python
-# Créer un venv
+# Créer un venv python3
 RUN python3 -m venv /opt/venv
-
-# Ajouter les binaires du venv au PATH
 ENV PATH="/opt/venv/bin:$PATH"
-
-# Installer les dépendances dans le venv
 RUN pip install --no-cache-dir -r requirements.txt
 
 
