@@ -8,7 +8,7 @@ NC='\e[0m' # No Color
 
 # Options du menu
 options=("Void Data" "Delta Time" "Port docker:" "Nom du Dossier:" "Nom de l'image:" "Nom du container:" "Cancel")
-selected=(0 0 0 0)  # Tableau pour suivre les sélections
+selected=(0 0 0 0 0 0 0)  # Tableau pour suivre les sélections
 current=0    # Index de l'option actuellement surlignée
 Crontab="15m"
 docker_port="8080"  # Variable pour stocker le port Docker sélectionné
