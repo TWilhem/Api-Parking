@@ -22,6 +22,7 @@ Avant de commencer, il est preferable d'avoir:
 3. Une connexion internet pour télécharger les fichiers nécessaires depuis GitHub.  
 
 Le script se chargera de les installer si besoin.
+
 ---
 
 ## Étapes pour activer le déploiement  
