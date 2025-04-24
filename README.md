@@ -84,7 +84,7 @@ docker logs <nom_du_conteneur>
 - [Documentation Docker](https://docs.docker.com/get-started/)
 - [Documentation Nginx](https://nginx.org/en/docs/)
 - [Documentation Python](https://docs.python.org/3/)
-- [Documentation Cron](https://man7.org/en/man7/cron.7.html)
+- [Documentation Cron](https://www.man7.org/linux/man-pages/man5/crontab.5.html)
 - [Documentation Wget](https://www.gnu.org/software/wget/manual/wget.html)
 - [Documentation Bash](https://www.gnu.org/software/bash/manual/bash.html)
 
