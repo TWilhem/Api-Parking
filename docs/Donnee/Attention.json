@@ -185519,5 +185519,20 @@
             "station:047 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "07/05/2025 11:44:56",
+        "Erreur": [
+            "Vicarello less than 10%",
+            "Gaumont OUEST less than 10%",
+            "station:021 less than 10%",
+            "station:024 less than 10%",
+            "station:025 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:034 less than 10%",
+            "station:047 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
