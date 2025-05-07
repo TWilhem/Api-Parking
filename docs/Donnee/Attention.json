@@ -185579,5 +185579,18 @@
             "station:047 less than 10%",
             "station:053 less than 10%"
         ]
+    },
+    {
+        "Date": "07/05/2025 13:08:52",
+        "Erreur": [
+            "Gaumont OUEST less than 10%",
+            "station:024 less than 10%",
+            "station:025 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:036 less than 10%",
+            "station:047 less than 10%",
+            "station:053 less than 10%"
+        ]
     }
 ]
