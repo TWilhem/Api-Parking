@@ -191941,5 +191941,21 @@
             "station:053 less than 10%",
             "station:061 less than 10%"
         ]
+    },
+    {
+        "Date": "12/05/2025 17:51:17",
+        "Erreur": [
+            "station:001 less than 10%",
+            "station:008 less than 10%",
+            "station:017 less than 10%",
+            "station:025 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:034 less than 10%",
+            "station:036 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:061 less than 10%"
+        ]
     }
 ]
