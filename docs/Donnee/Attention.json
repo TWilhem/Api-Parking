@@ -210770,5 +210770,24 @@
     {
         "Date": "27/05/2025 13:52:31",
         "Erreur": []
+    },
+    {
+        "Date": "27/05/2025 14:02:02",
+        "Erreur": [
+            "station:001 less than 10%",
+            "station:011 less than 10%",
+            "station:019 less than 10%",
+            "station:020 less than 10%",
+            "station:024 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:033 less than 10%",
+            "station:036 less than 10%",
+            "station:039 less than 10%",
+            "station:042 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:061 less than 10%"
+        ]
     }
 ]
