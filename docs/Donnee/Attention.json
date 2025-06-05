@@ -223422,5 +223422,21 @@
             "station:056 less than 10%",
             "station:057 less than 10%"
         ]
+    },
+    {
+        "Date": "05/06/2025 19:31:31",
+        "Erreur": [
+            "station:005 less than 10%",
+            "station:007 less than 10%",
+            "station:008 less than 10%",
+            "station:027 less than 10%",
+            "station:028 less than 10%",
+            "station:030 less than 10%",
+            "station:047 less than 10%",
+            "station:051 less than 10%",
+            "station:053 less than 10%",
+            "station:056 less than 10%",
+            "station:057 less than 10%"
+        ]
     }
 ]
