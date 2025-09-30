@@ -1,3 +1,24 @@
+// Charge fichier de configuration
+let config = null;
+
+function loadConfig() {
+    try {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "../config.json", false);
+        xhr.send(null);
+        if (xhr.status === 200) {
+            config = JSON.parse(xhr.responseText);
+            console.log("Fichier configuration chargé");
+        } else {
+            console.error("Impossible de charger config.json");
+        }
+    } catch (e) {
+            console.error("Activation hors repo", e);
+    }
+}
+
+loadConfig();
+
 // Prend les valeurs de la liste Date
 function Temps() {
     let selectElement = document.getElementById("timePeriod");
@@ -7,14 +28,28 @@ function Temps() {
 
 // Donne la date d'hier en ne renvoyant que Mois et Année sans affiché le jour
 function Aujourdhui(jAjout = 0) {
-    const maintenant = new Date();
-    maintenant.setDate(maintenant.getDate() + jAjout);
-    const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
-    const annee = maintenant.getFullYear();
-    return `${mois}-${annee}`;
+    try {
+        if (config && config.Settings && config.Settings.Date === "LastUpdated") {
+            console.log("OK")
+            return "06-2025";
+        } else {
+            console.log("NO")
+            const maintenant = new Date();
+            maintenant.setDate(maintenant.getDate() + jAjout);
+            const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
+            const annee = maintenant.getFullYear();
+            return `${mois}-${annee}`;
+        }
+    } catch (error) { 
+        const maintenant = new Date();
+        maintenant.setDate(maintenant.getDate() + jAjout);
+        const mois = (maintenant.getMonth() + 1).toString().padStart(2, '0');
+        const annee = maintenant.getFullYear();
+        return `${mois}-${annee}`;
+    }
 }
 
-// Donne toutes les Urls nécessaires a la date d'affichage des Voiture
+// Donne toutes les Urls nécessaires a la date d'affichage des Voitures
 function genererURLsVoiture(NbJour = 1) {
     const urlSet = new Set();
     for (let i = 1; i <= NbJour; i++) {
